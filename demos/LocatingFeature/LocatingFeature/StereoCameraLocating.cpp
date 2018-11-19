@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Eigen/Dense>
 using namespace Eigen;
 #include "StereoCameraLocating.h"

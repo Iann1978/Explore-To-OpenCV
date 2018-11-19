@@ -11,8 +11,11 @@
 //---------------------------------【头文件、命名空间包含部分】----------------------------
 //		描述：包含程序所使用的头文件和命名空间
 //-------------------------------------------------------------------------------------------------
-#include <opencv2\opencv.hpp>  
+#include "stdafx.h"
+
 #include "StereoCameraLocating.h"
+#include "Calibration.h"
+
 using namespace cv;
 using namespace std;
 
@@ -29,10 +32,9 @@ int main()
 }
 
 int Locating()
-{
-	StereoCameraLocating *locator = new StereoCameraLocating();
-	do locator->UpdateCameraLocation();
-	while (27 != waitKey(30));
-	//while (true);
+{	
+	Calibration calibrationer;
+	calibrationer.Calculate();
+	waitKey();
 	return 0;
 }
