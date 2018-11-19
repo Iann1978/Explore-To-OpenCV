@@ -1,0 +1,23 @@
+﻿  Calibration.cpp
+e:\git\explore-to-opencv\demos\cameracalibration\cameracalibration\calibration.cpp(62): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+e:\git\explore-to-opencv\demos\cameracalibration\cameracalibration\calibration.cpp(110): warning C4244: “=”: 从“_Tp”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=int
+          ]
+          and
+          [
+              _Tp=float
+          ]
+e:\git\explore-to-opencv\demos\cameracalibration\cameracalibration\calibration.cpp(111): warning C4244: “=”: 从“_Tp”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=int
+          ]
+          and
+          [
+              _Tp=float
+          ]
+e:\git\explore-to-opencv\demos\cameracalibration\cameracalibration\calibration.cpp(140): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+e:\git\explore-to-opencv\demos\cameracalibration\cameracalibration\calibration.cpp(141): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  CameraCalibration.vcxproj -> E:\git\Explore-To-OpenCV\demos\CameraCalibration\x64\Debug\CameraCalibration.exe

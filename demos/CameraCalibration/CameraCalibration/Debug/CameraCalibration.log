@@ -1,0 +1,46 @@
+﻿  Calibration.cpp
+c:\users\zdwx\downloads\基于opencv的张正有标定法（代码+棋盘图）\cameracalibration\cameracalibration\calibration.cpp(110): warning C4244: “=”: 从“_Tp”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=int
+          ]
+          and
+          [
+              _Tp=float
+          ]
+c:\users\zdwx\downloads\基于opencv的张正有标定法（代码+棋盘图）\cameracalibration\cameracalibration\calibration.cpp(111): warning C4244: “=”: 从“_Tp”转换到“_Tp”，可能丢失数据
+          with
+          [
+              _Tp=int
+          ]
+          and
+          [
+              _Tp=float
+          ]
+c:\users\zdwx\downloads\基于opencv的张正有标定法（代码+棋盘图）\cameracalibration\cameracalibration\calibration.cpp(142): warning C4018: “<”: 有符号/无符号不匹配
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::fastFree(void *)" (?fastFree@cv@@YAXPAX@Z)，该符号在函数 "public: __thiscall cv::Mat::~Mat(void)" (??1Mat@cv@@QAE@XZ) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "private: char * __thiscall cv::String::allocate(unsigned int)" (?allocate@String@cv@@AAEPADI@Z)，该符号在函数 "public: __thiscall cv::String::String(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0String@cv@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "private: void __thiscall cv::String::deallocate(void)" (?deallocate@String@cv@@AAEXXZ)，该符号在函数 "public: __thiscall cv::String::~String(void)" (??1String@cv@@QAE@XZ) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::error(int,class cv::String const &,char const *,char const *,int)" (?error@cv@@YAXHABVString@1@PBD1H@Z)，该符号在函数 "public: class cv::Vec<float,2> & __thiscall cv::Mat::at<class cv::Vec<float,2> >(int,int)" (??$at@V?$Vec@M$01@cv@@@Mat@cv@@QAEAAV?$Vec@M$01@1@HH@Z) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "class cv::debug_build_guard::_InputOutputArray const & __cdecl cv::noArray(void)" (?noArray@cv@@YAABV_InputOutputArray@debug_build_guard@1@XZ)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "public: void __thiscall cv::Mat::copyTo(class cv::debug_build_guard::_OutputArray const &)const " (?copyTo@Mat@cv@@QBEXABV_OutputArray@debug_build_guard@2@@Z)，该符号在函数 "public: class cv::Mat __thiscall cv::Mat::clone(void)const " (?clone@Mat@cv@@QBE?AV12@XZ) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "public: class cv::Mat & __thiscall cv::Mat::operator=(class cv::Scalar_<double> const &)" (??4Mat@cv@@QAEAAV01@ABV?$Scalar_@N@1@@Z)，该符号在函数 "public: __thiscall cv::Mat::Mat(int,int,int,class cv::Scalar_<double> const &)" (??0Mat@cv@@QAE@HHHABV?$Scalar_@N@1@@Z) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "public: static class cv::MatExpr __cdecl cv::Mat::eye(int,int,int)" (?eye@Mat@cv@@SA?AVMatExpr@2@HHH@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "public: void __thiscall cv::Mat::create(int,int const *,int)" (?create@Mat@cv@@QAEXHPBHH@Z)，该符号在函数 "public: void __thiscall cv::Mat::create(int,int,int)" (?create@Mat@cv@@QAEXHHH@Z) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "public: void __thiscall cv::Mat::deallocate(void)" (?deallocate@Mat@cv@@QAEXXZ)，该符号在函数 "public: void __thiscall cv::Mat::release(void)" (?release@Mat@cv@@QAEXXZ) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "double __cdecl cv::norm(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,int,class cv::debug_build_guard::_InputArray const &)" (?norm@cv@@YANABV_InputArray@debug_build_guard@1@0H0@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "public: static struct cv::Ptr<class cv::Formatter> __cdecl cv::Formatter::get(int)" (?get@Formatter@cv@@SA?AU?$Ptr@VFormatter@cv@@@2@H@Z)，该符号在函数 "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl cv::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class cv::Mat const &)" (??6cv@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV12@ABVMat@0@@Z) 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::remap(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_OutputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,int,int,class cv::Scalar_<double> const &)" (?remap@cv@@YAXABV_InputArray@debug_build_guard@1@ABV_OutputArray@31@00HHABV?$Scalar_@N@1@@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::initUndistortRectifyMap(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::Size_<int>,int,class cv::debug_build_guard::_OutputArray const &,class cv::debug_build_guard::_OutputArray const &)" (?initUndistortRectifyMap@cv@@YAXABV_InputArray@debug_build_guard@1@000V?$Size_@H@1@HABV_OutputArray@31@2@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::cvtColor(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_OutputArray const &,int,int)" (?cvtColor@cv@@YAXABV_InputArray@debug_build_guard@1@ABV_OutputArray@31@HH@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::Rodrigues(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_OutputArray const &,class cv::debug_build_guard::_OutputArray const &)" (?Rodrigues@cv@@YAXABV_InputArray@debug_build_guard@1@ABV_OutputArray@31@1@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::projectPoints(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_OutputArray const &,class cv::debug_build_guard::_OutputArray const &,double)" (?projectPoints@cv@@YAXABV_InputArray@debug_build_guard@1@0000ABV_OutputArray@31@1N@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "bool __cdecl cv::findChessboardCorners(class cv::debug_build_guard::_InputArray const &,class cv::Size_<int>,class cv::debug_build_guard::_OutputArray const &,int)" (?findChessboardCorners@cv@@YA_NABV_InputArray@debug_build_guard@1@V?$Size_@H@1@ABV_OutputArray@31@H@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "bool __cdecl cv::find4QuadCornerSubpix(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputOutputArray const &,class cv::Size_<int>)" (?find4QuadCornerSubpix@cv@@YA_NABV_InputArray@debug_build_guard@1@ABV_InputOutputArray@31@V?$Size_@H@1@@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::drawChessboardCorners(class cv::debug_build_guard::_InputOutputArray const &,class cv::Size_<int>,class cv::debug_build_guard::_InputArray const &,bool)" (?drawChessboardCorners@cv@@YAXABV_InputOutputArray@debug_build_guard@1@V?$Size_@H@1@ABV_InputArray@31@_N@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "double __cdecl cv::calibrateCamera(class cv::debug_build_guard::_InputArray const &,class cv::debug_build_guard::_InputArray const &,class cv::Size_<int>,class cv::debug_build_guard::_InputOutputArray const &,class cv::debug_build_guard::_InputOutputArray const &,class cv::debug_build_guard::_OutputArray const &,class cv::debug_build_guard::_OutputArray const &,int,class cv::TermCriteria)" (?calibrateCamera@cv@@YANABV_InputArray@debug_build_guard@1@0V?$Size_@H@1@ABV_InputOutputArray@31@2ABV_OutputArray@31@3HVTermCriteria@1@@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "class cv::Mat __cdecl cv::imread(class cv::String const &,int)" (?imread@cv@@YA?AVMat@1@ABVString@1@H@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "bool __cdecl cv::imwrite(class cv::String const &,class cv::debug_build_guard::_InputArray const &,class std::vector<int,class std::allocator<int> > const &)" (?imwrite@cv@@YA_NABVString@1@ABV_InputArray@debug_build_guard@1@ABV?$vector@HV?$allocator@H@std@@@std@@@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "int __cdecl cv::waitKey(int)" (?waitKey@cv@@YAHH@Z)，该符号在函数 _main 中被引用
+Calibration.obj : error LNK2019: 无法解析的外部符号 "void __cdecl cv::imshow(class cv::String const &,class cv::debug_build_guard::_InputArray const &)" (?imshow@cv@@YAXABVString@1@ABV_InputArray@debug_build_guard@1@@Z)，该符号在函数 _main 中被引用
+C:\Users\zdwx\Downloads\基于OpenCV的张正有标定法（代码+棋盘图）\CameraCalibration\Debug\CameraCalibration.exe : fatal error LNK1120: 25 个无法解析的外部命令
