@@ -1,37 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
-[RequireComponent(typeof(Camera))]
-public class RenderToCVTexture : MonoBehaviour
-{
-    public int cvTexIndex = 0;
-    public RenderTexture rtx;
+public class AVMApp : MonoBehaviour {
 
-    private void Awake()
+
+    private void Start()
     {
-        RenderTextureDescriptor rtxDesc = new RenderTextureDescriptor(512,256);
-        
-
-        rtx = new RenderTexture(rtxDesc);
-
-        Camera camera = GetComponent<Camera>();
-
-        camera.targetTexture = rtx;
-
-        AVMDll.SetCVTexture(cvTexIndex, rtx.GetNativeTexturePtr().ToInt32());
-
         StartCoroutine(CallPluginAtEndOfFrames());
-
     }
-
-
-    //public void Update()
-    //{
-    //    GL.IssuePluginEvent(AVMDll.GetRenderEventFunc(), 1);
-    //}
+    
 
 
     private IEnumerator CallPluginAtEndOfFrames()
@@ -51,5 +29,4 @@ public class RenderToCVTexture : MonoBehaviour
             GL.IssuePluginEvent(AVMDll.GetRenderEventFunc(), 1);
         }
     }
-
 }

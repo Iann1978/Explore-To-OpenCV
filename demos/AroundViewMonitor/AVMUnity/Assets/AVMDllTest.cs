@@ -11,8 +11,5 @@ public class AVMDllTest : MonoBehaviour {
         Debug.Log("avmdll version:" + version);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		Graphics.Blit(
-	}
+
 }
