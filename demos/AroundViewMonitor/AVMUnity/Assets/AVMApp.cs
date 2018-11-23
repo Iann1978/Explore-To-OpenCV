@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cvBridge;
 
 public class AVMApp : MonoBehaviour {
 
@@ -26,7 +27,7 @@ public class AVMApp : MonoBehaviour {
             // The plugin can distinguish between different
             // things it needs to do based on this ID.
             // For our simple plugin, it does not matter which ID we pass here.
-            GL.IssuePluginEvent(AVMDll.GetRenderEventFunc(), 1);
+            GL.IssuePluginEvent(CvBridgeDll.GetRenderEventFunc(), 1);
         }
     }
 }

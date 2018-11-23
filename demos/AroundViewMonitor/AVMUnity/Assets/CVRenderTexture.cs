@@ -14,12 +14,12 @@ namespace cvBridge
 
         private void Awake()
         {
-            RenderTextureDescriptor rtxDesc = new RenderTextureDescriptor(512, 256);
+            RenderTextureDescriptor rtxDesc = new RenderTextureDescriptor(width, height);
             rtx = new RenderTexture(rtxDesc);
             rtx.Create();
             Camera camera = GetComponent<Camera>();
             camera.targetTexture = rtx;
-            AVMDll.SetCVTexture(cvTexIndex, rtx.GetNativeTexturePtr().ToInt32());
+            CvBridgeDll.SetCVTexture(cvTexIndex, rtx.GetNativeTexturePtr().ToInt32());
         }
     }
 }

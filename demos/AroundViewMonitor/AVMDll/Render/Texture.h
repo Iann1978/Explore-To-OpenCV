@@ -6,7 +6,7 @@ public:
 	int				width;
 	int				height;
 	GLuint			texture;
-	static Texture*	cvTextures[4];
+	static Texture*	cvTextures[32];
 public:
 	Texture();
 	~Texture();

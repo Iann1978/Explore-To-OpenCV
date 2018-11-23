@@ -1,6 +1,6 @@
 #include "Texture.h"
 
-Texture*	Texture::cvTextures[4];
+Texture*	Texture::cvTextures[32];
 
 Texture::Texture()
 {

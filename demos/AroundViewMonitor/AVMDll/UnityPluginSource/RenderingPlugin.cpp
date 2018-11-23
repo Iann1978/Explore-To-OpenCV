@@ -107,7 +107,7 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 
 		//glGetTexImage(Texture::cvTextures[1]->texture, 0, GL_RGBA, GL_SRGB8_ALPHA8, image);
 
-		RenderDevice::ins->SetRenderTarget(Texture::cvTextures[1]->texture);
+		RenderDevice::ins->SetRenderTarget(Texture::cvTextures[16]->texture);
 		//RenderDevice::ins->DrawTestTriangle();
 		//RenderDevice::ins->DrawTestQuad();
 		RenderDevice::ins->Blit(tempTexture);
