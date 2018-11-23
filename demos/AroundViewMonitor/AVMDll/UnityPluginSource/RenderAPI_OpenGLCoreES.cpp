@@ -18,6 +18,7 @@
 #endif
 
 #include "../Render/Renderer_Triangle.h"
+#include "../Render/Renderer_Quad.h"
 
 class RenderAPI_OpenGLCoreES : public RenderDevice
 {
@@ -28,8 +29,10 @@ public:
 	virtual void ProcessDeviceEvent(UnityGfxDeviceEventType type, IUnityInterfaces* interfaces);
 	virtual void SetRenderTarget(GLuint target);
 	virtual void DrawTestTriangle();
-
+	virtual void DrawTestQuad();
+	virtual void Blit(GLuint srcTexture);
 	Renderer_Triangle* rendererTriange = nullptr;
+	Renderer_Quad* rendererQuad = nullptr;
 
 	GLuint FramebufferName = 0;
 
@@ -115,5 +118,37 @@ void RenderAPI_OpenGLCoreES::DrawTestTriangle()
 	glFlush();
 }
 
+
+void RenderAPI_OpenGLCoreES::DrawTestQuad()
+{
+	if (rendererQuad == nullptr)
+	{
+		rendererQuad = new Renderer_Quad();
+	}
+
+	// Dark blue background
+	glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	rendererQuad->Draw();
+
+	glFlush();
+}
+
+void RenderAPI_OpenGLCoreES::Blit(GLuint srcTexture)
+{
+	if (rendererQuad == nullptr)
+	{
+		rendererQuad = new Renderer_Quad();
+	}
+
+	// Dark blue background
+	glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	rendererQuad->texture = srcTexture;
+	rendererQuad->Draw();
+
+	glFlush();
+}
 
 #endif // #if SUPPORT_OPENGL_UNIFIED

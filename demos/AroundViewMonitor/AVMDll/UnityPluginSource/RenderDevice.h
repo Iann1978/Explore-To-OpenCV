@@ -29,6 +29,11 @@ public:
 	// Used for test the plugin
 	virtual void DrawTestTriangle() = 0;
 
+	// Used for test the plugin
+	virtual void DrawTestQuad() = 0;
+
+	virtual void Blit(GLuint srcTexture) = 0;
+
 	
 public:
 	static RenderDevice *ins;

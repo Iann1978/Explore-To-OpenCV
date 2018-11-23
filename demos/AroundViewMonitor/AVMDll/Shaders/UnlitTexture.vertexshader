@@ -1,0 +1,12 @@
+#version 330 core
+
+// Input vertex data, different for all executions of this shader.
+layout(location = 0) in vec4 xyuv;
+out vec2 uv;
+
+void main(){
+
+    gl_Position.xyzw = vec4(xyuv.xy,0.0,1.0);
+    uv = xyuv.zw;
+}
+

@@ -1,0 +1,10 @@
+#version 330 core
+
+in vec2 uv;
+out vec3 color;
+uniform sampler2D _BaseTex;
+
+void main()
+{
+	color = texture( _BaseTex, uv ).rgb;
+}
