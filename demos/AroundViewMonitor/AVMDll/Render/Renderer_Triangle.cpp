@@ -4,8 +4,8 @@
 
 Renderer_Triangle::Renderer_Triangle()
 {
-	programID = LoadShaders("E:/git/Explore-To-OpenCV/demos/AroundViewMonitor/AVMDll/Shaders/SimpleVertexShader.vertexshader",
-		"E:/git/Explore-To-OpenCV/demos/AroundViewMonitor/AVMDll/Shaders/SimpleFragmentShader.fragmentshader");
+	programID = LoadShaders("E:/githome/Explore-To-OpenCV/demos/AroundViewMonitor/AVMDll/Shaders/SimpleVertexShader.vertexshader",
+		"E:/githome/Explore-To-OpenCV/demos/AroundViewMonitor/AVMDll/Shaders/SimpleFragmentShader.fragmentshader");
 
 
 
