@@ -7,3 +7,6 @@ demos/LocatingCamera/obj/
 demos/LocatingCamera/Assembly-CSharp.csproj
 demos/LocatingCamera/LocatingCamera.sln
 demos/AroundViewMonitor/AVMUnity/Temp/
+demos/AroundViewMonitor/AVMUnity/Assets/AVMDll.dll
+demos/AroundViewMonitor/AVMUnity/Assets/AVMDll.ilk
+demos/AroundViewMonitor/AVMUnity/Assets/AVMDll.pdb
