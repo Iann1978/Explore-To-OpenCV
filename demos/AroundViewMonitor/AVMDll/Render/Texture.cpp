@@ -2,8 +2,11 @@
 
 Texture*	Texture::cvTextures[32];
 
-Texture::Texture()
+Texture::Texture(GLuint texture)
 {
+	this->texture = texture;
+	mat = nullptr;
+
 }
 
 

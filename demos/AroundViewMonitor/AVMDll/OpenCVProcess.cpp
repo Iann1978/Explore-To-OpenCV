@@ -4,17 +4,16 @@
 using namespace cv; //°üº¬cvÃüÃû¿Õ¼ä
 using namespace std;
 #include "OpenCVProcess.h"
+#include "Render\Texture.h"
 
 
 
 
 void OpenCVProcess::Process(Mat** inputs, Mat** outputs)
 {
-	//output.create(input.rows, input.cols, input.type());
-	//input.copyTo(output);
-
-	Mat& input = *inputs[0];
-	Mat& output = *outputs[0];
+	
+	Mat& input = *Texture::cvTextures[0]->mat;
+	Mat& output = *Texture::cvTextures[16]->mat;
 
 	vector<Mat> channels;
 	split(input, channels);
@@ -25,5 +24,8 @@ void OpenCVProcess::Process(Mat** inputs, Mat** outputs)
 
 	merge(channels, output);
 
-	//cvtColor(input, output, CV_RGB2GRAY);
+	Mat& mat17 = *Texture::cvTextures[17]->mat;
+
+	output.copyTo(mat17);
+
 }
