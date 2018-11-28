@@ -24,6 +24,7 @@
     <ClCompile Include="Render\Renderer_Quad.cpp">
       <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="OpenCVProcess.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\shader.hpp">
@@ -71,6 +72,7 @@
     <ClInclude Include="Render\Renderer_Quad.h">
       <Filter>Render</Filter>
     </ClInclude>
+    <ClInclude Include="OpenCVProcess.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UnityPluginSource\RenderingPlugin.def" />
@@ -99,6 +101,9 @@
     </Filter>
     <Filter Include="Unity">
       <UniqueIdentifier>{b87613c7-7792-4489-8739-afe2148bbee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NewFilter1">
+      <UniqueIdentifier>{357d1d13-315a-4ae9-a9e1-8322c23643ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

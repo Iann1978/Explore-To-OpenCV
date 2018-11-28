@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cvTexIndex: 0
   width: 512
-  height: 256
+  height: 512
 --- !u!1 &2110503915
 GameObject:
   m_ObjectHideFlags: 0

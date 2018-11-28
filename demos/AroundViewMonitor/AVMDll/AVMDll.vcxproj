@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="OpenCVProcess.h" />
     <ClInclude Include="Render\Renderer_Quad.h" />
     <ClInclude Include="Render\Renderer_Triangle.h" />
     <ClInclude Include="Render\shader.hpp" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="OpenCVProcess.cpp" />
     <ClCompile Include="Render\Renderer_Quad.cpp" />
     <ClCompile Include="Render\Renderer_Triangle.cpp" />
     <ClCompile Include="Render\shader.cpp" />

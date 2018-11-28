@@ -9,7 +9,10 @@
 
 
 #include <opencv2/opencv.hpp> //头文件
+
 using namespace cv; //包含cv命名空间
+
+#include "../OpenCVProcess.h"
 
 
 static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType eventType);
@@ -88,6 +91,12 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 		err = glGetError();
 
+
+		Mat input = Mat(512, 512, CV_8UC3, image);
+		Mat output;
+		OpenCVProcess opencvProcess;
+		opencvProcess.Process(input, output);
+
 		glBindTexture(GL_TEXTURE_2D, Texture::cvTextures[16]->texture);
 		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -95,7 +104,9 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		//glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB8, 512, 256, 0, GL_BGRA, GL_UNSIGNED_BYTE, image);
 
-		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 512, 256, GL_RGB, GL_UNSIGNED_BYTE, image);
+		//glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 512, 256, GL_RGB, GL_UNSIGNED_BYTE, image);
+		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 512, 512, GL_RGB, GL_UNSIGNED_BYTE, output.ptr());
+
 
 		err = glGetError();
 
