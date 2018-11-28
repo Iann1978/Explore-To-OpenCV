@@ -19,7 +19,7 @@ namespace cvBridge
             rtx.Create();
             Camera camera = GetComponent<Camera>();
             camera.targetTexture = rtx;
-            CvBridgeDll.SetCVTexture(cvTexIndex, rtx.GetNativeTexturePtr().ToInt32());
+            CvBridgeDll.SetCVTexture(cvTexIndex, width, height, rtx.GetNativeTexturePtr().ToInt32());
         }
     }
 }

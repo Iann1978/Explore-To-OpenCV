@@ -69,8 +69,8 @@ static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType ev
 
 
 char *image = nullptr;
-char *outimage = nullptr;
-GLuint tempTexture = 0;
+
+//GLuint tempTexture = 0;
 //Mat** inputs = nullptr;
 //Mat** outputs = nullptr;
 static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
@@ -81,9 +81,8 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		GLenum err;
 		if (!image)
 		{
-			image = new char[512 * 512 * 4];
-			outimage = new char[512 * 512 * 4];
-			glGenTextures(1, &tempTexture);
+			image = new char[2048 * 2048 * 4];
+			//glGenTextures(1, &tempTexture);
 			err = glGetError();
 		}
 
@@ -100,12 +99,13 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		{
 			if (Texture::cvTextures[i])
 			{
+				Texture* texture = Texture::cvTextures[i];
 				
-				glBindTexture(GL_TEXTURE_2D, Texture::cvTextures[i]->texture);
+				glBindTexture(GL_TEXTURE_2D, texture->texture);
 				err = glGetError();
 				glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 				err = glGetError();
-				Texture::cvTextures[i]->mat = new Mat(512, 512, CV_8UC3, image);
+				Texture::cvTextures[i]->mat = new Mat(texture->width, texture->height, CV_8UC3, image);
 			}
 		}
 

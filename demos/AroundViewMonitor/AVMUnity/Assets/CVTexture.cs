@@ -16,7 +16,7 @@ namespace cvBridge
         private void Awake()
         {
             texture = new Texture2D(width, height, TextureFormat.ARGB32, false);
-            CvBridgeDll.SetCVTexture(cvTexIndex, texture.GetNativeTexturePtr().ToInt32());
+            CvBridgeDll.SetCVTexture(cvTexIndex, width, height, texture.GetNativeTexturePtr().ToInt32());
             GetComponent<Renderer>().sharedMaterial.mainTexture = texture;
         }
     }

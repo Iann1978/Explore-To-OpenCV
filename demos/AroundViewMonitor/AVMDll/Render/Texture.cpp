@@ -2,8 +2,10 @@
 
 Texture*	Texture::cvTextures[32];
 
-Texture::Texture(GLuint texture)
+Texture::Texture(int width, int height, GLuint texture)
 {
+	this->width = width;
+	this->height = height;
 	this->texture = texture;
 	mat = nullptr;
 

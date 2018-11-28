@@ -13,7 +13,7 @@ public:
 	static Texture*	cvTextures[32];
 
 public:
-	Texture(GLuint texture);
+	Texture(int width, int height, GLuint texture);
 	~Texture();
 };
 
