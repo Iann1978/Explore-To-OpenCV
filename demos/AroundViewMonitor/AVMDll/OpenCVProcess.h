@@ -2,7 +2,7 @@
 class OpenCVProcess
 {
 public:
-	virtual void Process(Mat& input, Mat& output);
+	virtual void Process(Mat** inputs, Mat** outputs);
 
 };
 

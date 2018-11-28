@@ -71,6 +71,8 @@ static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType ev
 char *image = nullptr;
 char *outimage = nullptr;
 GLuint tempTexture = 0;
+Mat** inputs = nullptr;
+Mat** outputs = nullptr;
 static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 {
 	if (eventID == 1)
@@ -85,6 +87,24 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 			err = glGetError();
 		}
 
+		if (!inputs)
+		{
+			inputs = new Mat*[16];
+			memset(inputs, sizeof(Mat*) * 16, 0);
+		}
+
+		if (!outputs)
+		{
+			outputs = new Mat*[16];
+			memset(outputs, sizeof(Mat*) * 16, 0);
+		}
+
+		//if (nullptr == inputs[0])
+		//{
+		//	inputs[0] = new Mat(512, 512, CV_8UC3, image);
+		//}
+		//
+
 		
 		glBindTexture(GL_TEXTURE_2D, Texture::cvTextures[0]->texture);
 		err = glGetError();
@@ -92,10 +112,12 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		err = glGetError();
 
 
-		Mat input = Mat(512, 512, CV_8UC3, image);
-		Mat output;
+
+		inputs[0] = new Mat(512, 512, CV_8UC3, image);
+		outputs[0] = new Mat();
+		
 		OpenCVProcess opencvProcess;
-		opencvProcess.Process(input, output);
+		opencvProcess.Process(inputs, outputs);
 
 		glBindTexture(GL_TEXTURE_2D, Texture::cvTextures[16]->texture);
 		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -105,11 +127,15 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		//glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB8, 512, 256, 0, GL_BGRA, GL_UNSIGNED_BYTE, image);
 
 		//glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 512, 256, GL_RGB, GL_UNSIGNED_BYTE, image);
-		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 512, 512, GL_RGB, GL_UNSIGNED_BYTE, output.ptr());
+		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 512, 512, GL_RGB, GL_UNSIGNED_BYTE, outputs[0]->ptr());
 
 
 		err = glGetError();
 
+		delete inputs[0];
+		inputs[0] = nullptr;
+		delete outputs[0];
+		outputs[0] = nullptr;
 		//Mat sourceImage = Mat(256, 512, CV_8UC3, image);
 		//Mat greyImage;
 

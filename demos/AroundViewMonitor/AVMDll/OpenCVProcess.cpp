@@ -8,10 +8,13 @@ using namespace std;
 
 
 
-void OpenCVProcess::Process(Mat& input, Mat& output)
+void OpenCVProcess::Process(Mat** inputs, Mat** outputs)
 {
 	//output.create(input.rows, input.cols, input.type());
 	//input.copyTo(output);
+
+	Mat& input = *inputs[0];
+	Mat& output = *outputs[0];
 
 	vector<Mat> channels;
 	split(input, channels);
