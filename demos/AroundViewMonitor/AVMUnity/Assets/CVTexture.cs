@@ -9,6 +9,7 @@ namespace cvBridge
         public bool createOnWake = true;
         public int cvTexIndex = 1;
         public Texture2D texture;
+        [Header("The size of the texture can be max to (2048x2048)")]
         public int width = 512;
         public int height = 512;
 
