@@ -12,20 +12,28 @@ using namespace std;
 void OpenCVProcess::Process(Mat** inputs, Mat** outputs)
 {
 	
-	Mat& input = *Texture::cvTextures[0]->mat;
-	Mat& output = *Texture::cvTextures[16]->mat;
-
-	vector<Mat> channels;
-	split(input, channels);
-	for (int i = 0; i < channels.size(); i++)
-	{
-		cvtColor(input, channels[i], CV_RGB2GRAY);
-	}
-
-	merge(channels, output);
-
+	Mat& mat0 = *Texture::cvTextures[0]->mat;
+	Mat& mat1 = *Texture::cvTextures[1]->mat;
+	Mat& mat16 = *Texture::cvTextures[16]->mat;
 	Mat& mat17 = *Texture::cvTextures[17]->mat;
 
-	output.copyTo(mat17);
+	mat0.copyTo(mat16);
+	mat1.copyTo(mat17);
+
+	vector<Mat> channels;
+	split(mat0, channels);
+	for (int i = 0; i < channels.size(); i++)
+	{
+		cvtColor(mat0, channels[i], CV_RGB2GRAY);
+	}
+	merge(channels, mat16);
+
+	channels.clear();
+	split(mat1, channels);
+	for (int i = 0; i < channels.size(); i++)
+	{
+		cvtColor(mat1, channels[i], CV_RGB2GRAY);
+	}
+	merge(channels, mat17);
 
 }
