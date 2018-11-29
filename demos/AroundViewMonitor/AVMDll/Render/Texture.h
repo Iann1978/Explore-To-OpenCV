@@ -6,10 +6,11 @@ using namespace cv; //°üº¬cvÃüÃû¿Õ¼ä
 class Texture
 {
 public:
-	int				width;
-	int				height;
-	GLuint			texture;
+	int				width = 0;
+	int				height = 0;
+	GLuint			texture = 0;
 	Mat				*mat = nullptr;
+	char			*image = nullptr;
 	static Texture*	cvTextures[32];
 
 public:
