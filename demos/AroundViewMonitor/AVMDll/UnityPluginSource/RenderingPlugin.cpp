@@ -115,8 +115,9 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		{
 			if (Texture::cvTextures[i])
 			{
-				glBindTexture(GL_TEXTURE_2D, Texture::cvTextures[i]->texture);
-				glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 512, 512, GL_RGB, GL_UNSIGNED_BYTE, Texture::cvTextures[i]->mat->ptr());
+				Texture* cvTexture = Texture::cvTextures[i];
+				glBindTexture(GL_TEXTURE_2D, cvTexture->texture);
+				glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, cvTexture->width, cvTexture->height, GL_RGB, GL_UNSIGNED_BYTE, cvTexture->mat->ptr());
 			}
 		}
 
