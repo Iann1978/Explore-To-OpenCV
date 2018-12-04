@@ -7,7 +7,7 @@ using namespace std;
 #include "Render\Texture.h"
 
 
-
+int OpenCVProcess::intValues[32];
 
 void OpenCVProcess::Process(Mat** inputs, Mat** outputs)
 {
