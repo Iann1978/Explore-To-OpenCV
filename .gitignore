@@ -12,3 +12,5 @@ demos/AroundViewMonitor/AVMUnity/Assets/AVMDll.ilk
 demos/AroundViewMonitor/AVMUnity/Assets/AVMDll.pdb
 demos/AroundViewMonitor/AVMDll/build/
 demos/AroundViewMonitor/AVMUnity/Logs/Packages-Update.log
+demos/AroundViewMonitor/AVMUnity/Assets/AVMDll.exp
+demos/AroundViewMonitor/AVMUnity/Assets/AVMDll.lib
