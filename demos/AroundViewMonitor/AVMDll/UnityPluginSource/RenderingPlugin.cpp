@@ -83,23 +83,23 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		// Convert CVTexture to cv::Mat
 		for (int i = 0; i < 16; i++)
 		{
-			if (Texture::cvTextures[i])
-			{
-				Texture* texture = Texture::cvTextures[i];
-				
+			Texture* texture = Texture::cvTextures[i];
+			if (texture)
+			{	
 				glBindTexture(GL_TEXTURE_2D, texture->texture);
 				err = glGetError();
 				glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->image);
 				err = glGetError();
-				Texture::cvTextures[i]->mat = new Mat(texture->width, texture->height, CV_8UC3, texture->image);
+				texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
 			}
 		}
 
 		for (int i = 16; i < 32; i++)
 		{
-			if (Texture::cvTextures[i])
+			Texture* texture = Texture::cvTextures[i];
+			if (texture)
 			{
-				Texture::cvTextures[i]->mat = new Mat();
+				texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
 			}
 		}
 	
