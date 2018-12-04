@@ -15,6 +15,9 @@ namespace cvBridge
         public static extern void SetCVTexture(int index, int width, int height, int tex);
 
         [DllImport("AVMDll")]
+        public static extern void SetInteger(int index, int value);
+
+        [DllImport("AVMDll")]
         public static extern IntPtr GetRenderEventFunc();
     }
 }
