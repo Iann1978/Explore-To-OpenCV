@@ -912,7 +912,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244933472}
-  m_LocalRotation: {x: 0.90786994, y: -0, z: -0, w: 0.41925195}
+  m_LocalRotation: {x: 0.019863598, y: -0, z: -0, w: 0.9998027}
   m_LocalPosition: {x: 0, y: 1.6234826, z: -3}
   m_LocalScale: {x: 1.000001, y: 1.0000002, z: 1.0000012}
   m_Children: []
@@ -1141,8 +1141,8 @@ MonoBehaviour:
   createOnWake: 1
   cvTexIndex: 16
   texture: {fileID: 0}
-  width: 1024
-  height: 1024
+  width: 287
+  height: 664
 --- !u!64 &1519469448
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1655,20 +1655,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804706424}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1523b7c2ad89b548812e8deb1800bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontCamera: {fileID: 1244933473}
+  frontCamera: {fileID: 2001127247}
+  cvTexture: {fileID: 1519469447}
   w: 1.8
   h: 6
   wf: 11.32
   hf: 10.08
   Hf: 256
-  Ht: 1024
   Wf: 218
-  Wt: 8533
+  Ht: 664.381
+  Wt: 287.49207
   l: 1.6234826
   fovV: 1.4111079
   fovHH: 1.0123748
@@ -1676,6 +1677,8 @@ MonoBehaviour:
   fovVDegree: 80.850525
   fovHDegree: 72.12616
   ratio: 0.85489863
+  a: 256
+  b: 120
 --- !u!1 &1828948945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,8 +1913,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001127244}
-  m_LocalRotation: {x: -0.000000079136754, y: 0.9063079, z: -0.42261827, w: -0.00000016970932}
-  m_LocalPosition: {x: 0, y: 0.15, z: -2.16}
+  m_LocalRotation: {x: 0.019863598, y: -0, z: -0, w: 0.9998027}
+  m_LocalPosition: {x: 0, y: 1.6234826, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110503916}
@@ -1949,7 +1952,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 100
+  field of view: 80.850525
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1980,8 +1983,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cvTexIndex: 0
-  width: 1024
-  height: 512
+  width: 218
+  height: 256
 --- !u!1 &2098756761
 GameObject:
   m_ObjectHideFlags: 0
