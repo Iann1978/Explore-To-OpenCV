@@ -6,18 +6,18 @@ using UnityEngine;
 
 namespace cvBridge
 {
-    public class CvBridgeDll
+    public class CVBridge
     {
-        [DllImport("AVMDll")]
+        [DllImport("CVBridge")]
         public static extern int GetVersion();
 
-        [DllImport("AVMDll")]
+        [DllImport("CVBridge")]
         public static extern void SetCVTexture(int index, int width, int height, int tex);
 
-        [DllImport("AVMDll")]
+        [DllImport("CVBridge")]
         public static extern void SetInteger(int index, int value);
 
-        [DllImport("AVMDll")]
+        [DllImport("CVBridge")]
         public static extern IntPtr GetRenderEventFunc();
     }
 }
