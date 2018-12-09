@@ -30,18 +30,6 @@ public:
 
 	virtual void Texture2Mat(Texture *tex) = 0;
 	virtual void Mat2Texture(Texture *tex) = 0;
-
-	// Set render target for this device. 0 for draw unity screen.
-	virtual void SetRenderTarget(GLuint target) = 0;
-
-	// Used for test the plugin
-	virtual void DrawTestTriangle() = 0;
-
-	// Used for test the plugin
-	virtual void DrawTestQuad() = 0;
-
-	virtual void Blit(GLuint srcTexture) = 0;
-
 	
 public:
 	static RenderDevice *ins;

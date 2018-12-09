@@ -152,9 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="OpenCVProcess.h" />
-    <ClInclude Include="Render\Renderer_Quad.h" />
-    <ClInclude Include="Render\Renderer_Triangle.h" />
-    <ClInclude Include="Render\shader.hpp" />
     <ClInclude Include="Render\Texture.h" />
     <ClInclude Include="UnityPluginSource\GLEW\glew.h" />
     <ClInclude Include="UnityPluginSource\GLEW\glxew.h" />
@@ -171,9 +168,6 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="OpenCVProcess.cpp" />
-    <ClCompile Include="Render\Renderer_Quad.cpp" />
-    <ClCompile Include="Render\Renderer_Triangle.cpp" />
-    <ClCompile Include="Render\shader.cpp" />
     <ClCompile Include="Render\Texture.cpp" />
     <ClCompile Include="UnityPluginSource\GLEW\glew.c" />
     <ClCompile Include="UnityPluginSource\RenderDevice.cpp" />
@@ -181,10 +175,6 @@
     <ClCompile Include="UnityPluginSource\RenderingPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\SimpleFragmentShader.fragmentshader" />
-    <None Include="Shaders\SimpleVertexShader.vertexshader" />
-    <None Include="Shaders\UnlitTexture.fragmentshader" />
-    <None Include="Shaders\UnlitTexture.vertexshader" />
     <None Include="UnityPluginSource\RenderingPlugin.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

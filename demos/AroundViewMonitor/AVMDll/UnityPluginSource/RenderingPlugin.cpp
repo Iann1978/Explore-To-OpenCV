@@ -77,9 +77,6 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 {
 	if (eventID == 1)
 	{
-		
-		GLenum err;
-
 		// Convert CVTexture to cv::Mat
 		for (int i = 0; i < 32; i++)
 		{
@@ -87,29 +84,12 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 			if (texture)
 			{	
 				RenderDevice::ins->Texture2Mat(texture);
-				//glBindTexture(GL_TEXTURE_2D, texture->texture);
-				//err = glGetError();
-				//glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->image);
-				//err = glGetError();
-				//texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
 			}
 		}
-
-		//for (int i = 16; i < 32; i++)
-		//{
-		//	Texture* texture = Texture::cvTextures[i];
-		//	if (texture)
-		//	{
-		//		texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
-		//	}
-		//}
-	
 
 		// Process cv::Mat
 		OpenCVProcess opencvProcess;
 		opencvProcess.Process(nullptr, nullptr);
-
-
 
 		// Convert cv::Mat to CVTexture
 		for (int i = 16; i < 32; i++)
@@ -117,12 +97,8 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 			if (Texture::cvTextures[i])
 			{
 				RenderDevice::ins->Mat2Texture(Texture::cvTextures[i]);
-				//Texture* cvTexture = Texture::cvTextures[i];
-				//glBindTexture(GL_TEXTURE_2D, cvTexture->texture);
-				//glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, cvTexture->width, cvTexture->height, GL_RGB, GL_UNSIGNED_BYTE, cvTexture->mat->ptr());
 			}
 		}
-
 
 		// Release resources
 		for (int i = 0; i < 32; i++)

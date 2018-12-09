@@ -17,8 +17,7 @@
 #	include "GLEW/glew.h"
 #endif
 
-#include "../Render/Renderer_Triangle.h"
-#include "../Render/Renderer_Quad.h"
+
 
 class RenderAPI_OpenGLCoreES : public RenderDevice
 {
@@ -27,27 +26,13 @@ public:
 	virtual ~RenderAPI_OpenGLCoreES() { }
 
 	virtual void ProcessDeviceEvent(UnityGfxDeviceEventType type, IUnityInterfaces* interfaces);
-	virtual void SetRenderTarget(GLuint target);
-	virtual void DrawTestTriangle();
-	virtual void DrawTestQuad();
-	virtual void Blit(GLuint srcTexture);
 
 	virtual void Texture2Mat(Texture* tex);
 	virtual void Mat2Texture(Texture *tex);
-	Renderer_Triangle* rendererTriange = nullptr;
-	Renderer_Quad* rendererQuad = nullptr;
 
-	GLuint FramebufferName = 0;
 
 private:
 	UnityGfxRenderer m_APIType;
-	//GLuint m_VertexShader;
-	//GLuint m_FragmentShader;
-	//GLuint m_Program;
-	//GLuint m_VertexArray;
-	//GLuint m_VertexBuffer;
-	//int m_UniformWorldMatrix;
-	//int m_UniformProjMatrix;
 };
 
 
@@ -70,88 +55,12 @@ void RenderAPI_OpenGLCoreES::ProcessDeviceEvent(UnityGfxDeviceEventType type, IU
 {
 	if (type == kUnityGfxDeviceEventInitialize)
 	{
-		//CreateResources();
+		//@TODO: initialize resources
 	}
 	else if (type == kUnityGfxDeviceEventShutdown)
 	{
 		//@TODO: release resources
 	}
-}
-
-void RenderAPI_OpenGLCoreES::SetRenderTarget(GLuint renderedTexture)
-{
-	
-	if (0 == renderedTexture)
-	{
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		return;
-	}
-	
-	if (FramebufferName == 0)
-	{
-		glGenFramebuffers(1, &FramebufferName);
-	}
-	
-	glViewport(0, 0, 512, 512);
-	glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
-	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, renderedTexture, 0);
-
-	// Always check that our framebuffer is ok
-	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-		return ;
-
-	int a = 0;
-	int b = 0;
-
-}
-
-void RenderAPI_OpenGLCoreES::DrawTestTriangle()
-{	
-	if (rendererTriange == nullptr)
-	{
-		rendererTriange = new Renderer_Triangle();
-	}
-
-	// Dark blue background
-	glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	rendererTriange->Draw();
-
-	glFlush();
-}
-
-
-void RenderAPI_OpenGLCoreES::DrawTestQuad()
-{
-	if (rendererQuad == nullptr)
-	{
-		rendererQuad = new Renderer_Quad();
-	}
-
-	// Dark blue background
-	glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	rendererQuad->Draw();
-
-	glFlush();
-}
-
-void RenderAPI_OpenGLCoreES::Blit(GLuint srcTexture)
-{
-	if (rendererQuad == nullptr)
-	{
-		rendererQuad = new Renderer_Quad();
-	}
-
-	// Dark blue background
-	glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	rendererQuad->texture = srcTexture;
-	rendererQuad->Draw();
-
-	glFlush();
 }
 
 void RenderAPI_OpenGLCoreES::Texture2Mat(Texture* tex)

@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="UnityPluginSource\RenderingPlugin.cpp" />
-    <ClCompile Include="Render\shader.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="Render\Texture.cpp">
       <Filter>Render</Filter>
     </ClCompile>
@@ -15,21 +12,12 @@
     <ClCompile Include="UnityPluginSource\RenderDevice.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="Render\Renderer_Triangle.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="UnityPluginSource\RenderAPI_OpenGLCoreES.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\Renderer_Quad.cpp">
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="OpenCVProcess.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Render\shader.hpp">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="Render\Texture.h">
       <Filter>Render</Filter>
     </ClInclude>
@@ -63,36 +51,15 @@
     <ClInclude Include="UnityPluginSource\RenderDevice.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="Render\Renderer_Triangle.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="UnityPluginSource\PlatformBase.h">
-      <Filter>Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\Renderer_Quad.h">
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="OpenCVProcess.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UnityPluginSource\RenderingPlugin.def" />
-    <None Include="Shaders\SimpleFragmentShader.fragmentshader">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Shaders\SimpleVertexShader.vertexshader">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Shaders\UnlitTexture.fragmentshader">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="Shaders\UnlitTexture.vertexshader">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{c4f0d049-c5c5-4ff5-8486-1c7bd80505c1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render">
       <UniqueIdentifier>{93a9af23-19c2-46fc-a47f-1d0c4f4e93cf}</UniqueIdentifier>
     </Filter>
@@ -101,9 +68,6 @@
     </Filter>
     <Filter Include="Unity">
       <UniqueIdentifier>{b87613c7-7792-4489-8739-afe2148bbee9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="NewFilter1">
-      <UniqueIdentifier>{357d1d13-315a-4ae9-a9e1-8322c23643ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
