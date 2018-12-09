@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="UnityPluginSource\RenderingPlugin.cpp" />
-    <ClCompile Include="Render\Texture.cpp">
-      <Filter>Render</Filter>
-    </ClCompile>
     <ClCompile Include="UnityPluginSource\GLEW\glew.c">
       <Filter>GLEW</Filter>
     </ClCompile>
@@ -16,11 +13,11 @@
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="OpenCVProcess.cpp" />
+    <ClCompile Include="Render\CVTexture.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Render\Texture.h">
-      <Filter>Render</Filter>
-    </ClInclude>
     <ClInclude Include="UnityPluginSource\GLEW\glxew.h">
       <Filter>GLEW</Filter>
     </ClInclude>
@@ -55,6 +52,9 @@
       <Filter>Render</Filter>
     </ClInclude>
     <ClInclude Include="OpenCVProcess.h" />
+    <ClInclude Include="Render\CVTexture.h">
+      <Filter>Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="UnityPluginSource\RenderingPlugin.def" />

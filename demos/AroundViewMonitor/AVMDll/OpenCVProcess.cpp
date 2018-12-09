@@ -4,12 +4,12 @@
 using namespace cv; //°üº¬cvÃüÃû¿Õ¼ä
 using namespace std;
 #include "OpenCVProcess.h"
-#include "Render\Texture.h"
+#include "Render\CVTexture.h"
 
 namespace cvBridge
 {
 	int OpenCVProcess::intValues[32];
-	Texture*	OpenCVProcess::cvTextures[32];
+	CVTexture*	OpenCVProcess::cvTextures[32];
 
 	void OpenCVProcess::Process(Mat** inputs, Mat** outputs)
 	{

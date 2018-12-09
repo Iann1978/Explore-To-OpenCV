@@ -153,7 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="OpenCVProcess.h" />
-    <ClInclude Include="Render\Texture.h" />
+    <ClInclude Include="Render\CVTexture.h" />
     <ClInclude Include="UnityPluginSource\GLEW\glew.h" />
     <ClInclude Include="UnityPluginSource\GLEW\glxew.h" />
     <ClInclude Include="UnityPluginSource\GLEW\wglew.h" />
@@ -169,7 +169,7 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="OpenCVProcess.cpp" />
-    <ClCompile Include="Render\Texture.cpp" />
+    <ClCompile Include="Render\CVTexture.cpp" />
     <ClCompile Include="UnityPluginSource\GLEW\glew.c" />
     <ClCompile Include="UnityPluginSource\RenderDevice.cpp" />
     <ClCompile Include="UnityPluginSource\RenderAPI_OpenGLCoreES.cpp" />

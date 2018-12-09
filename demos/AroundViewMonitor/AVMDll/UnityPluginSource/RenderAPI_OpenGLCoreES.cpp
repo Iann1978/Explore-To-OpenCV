@@ -29,8 +29,8 @@ namespace cvBridge
 
 		virtual void ProcessDeviceEvent(UnityGfxDeviceEventType type, IUnityInterfaces* interfaces);
 
-		virtual void Texture2Mat(Texture* tex);
-		virtual void Mat2Texture(Texture *tex);
+		virtual void Texture2Mat(CVTexture* tex);
+		virtual void Mat2Texture(CVTexture *tex);
 
 
 	private:
@@ -61,14 +61,14 @@ namespace cvBridge
 		}
 	}
 
-	void RenderDevice_OpenGLCoreES::Texture2Mat(Texture* tex)
+	void RenderDevice_OpenGLCoreES::Texture2Mat(CVTexture* tex)
 	{
 		glBindTexture(GL_TEXTURE_2D, tex->texture);
 		glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, tex->image);
 		tex->mat = new Mat(tex->height, tex->width, CV_8UC3, tex->image);
 	}
 
-	void RenderDevice_OpenGLCoreES::Mat2Texture(Texture *tex)
+	void RenderDevice_OpenGLCoreES::Mat2Texture(CVTexture *tex)
 	{
 		glBindTexture(GL_TEXTURE_2D, tex->texture);
 		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, tex->width, tex->height, GL_RGB, GL_UNSIGNED_BYTE, tex->mat->ptr());

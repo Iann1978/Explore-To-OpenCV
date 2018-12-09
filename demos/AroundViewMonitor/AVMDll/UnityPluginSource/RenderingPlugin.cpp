@@ -2,7 +2,7 @@
 
 #include "PlatformBase.h"
 #include "RenderDevice.h"
-#include "../Render/Texture.h"
+#include "../Render/CVTexture.h"
 #include <assert.h>
 #include <math.h>
 #include <vector>
@@ -28,7 +28,7 @@ extern "C" void	UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginLoad(IUnit
 	s_UnityInterfaces = unityInterfaces;
 	s_Graphics = s_UnityInterfaces->Get<IUnityGraphics>();
 	s_Graphics->RegisterDeviceEventCallback(OnGraphicsDeviceEvent);
-	memset(OpenCVProcess::cvTextures, sizeof(Texture*) * 32, 0);
+	memset(OpenCVProcess::cvTextures, sizeof(CVTexture*) * 32, 0);
 	// Run OnGraphicsDeviceEvent(initialize) manually on plugin load
 	OnGraphicsDeviceEvent(kUnityGfxDeviceEventInitialize);
 }
@@ -82,7 +82,7 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		// Convert CVTexture to cv::Mat
 		for (int i = 0; i < 32; i++)
 		{
-			Texture* texture = OpenCVProcess::cvTextures[i];
+			CVTexture* texture = OpenCVProcess::cvTextures[i];
 			if (texture)
 			{	
 				RenderDevice::ins->Texture2Mat(texture);

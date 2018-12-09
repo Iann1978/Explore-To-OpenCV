@@ -5,7 +5,7 @@
 namespace cvBridge
 {
 	using namespace cv; //°üº¬cvÃüÃû¿Õ¼ä
-	class Texture
+	class CVTexture
 	{
 	public:
 		int				width = 0;
@@ -16,8 +16,8 @@ namespace cvBridge
 		
 
 	public:
-		Texture(int width, int height, GLuint texture);
-		~Texture();
+		CVTexture(int width, int height, GLuint texture);
+		~CVTexture();
 	};
 }
 

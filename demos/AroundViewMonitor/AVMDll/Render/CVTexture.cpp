@@ -1,11 +1,11 @@
-#include "Texture.h"
+#include "CVTexture.h"
 
 
 namespace cvBridge
 {
 
 
-	Texture::Texture(int width, int height, GLuint texture)
+	CVTexture::CVTexture(int width, int height, GLuint texture)
 	{
 		this->width = width;
 		this->height = height;
@@ -16,7 +16,7 @@ namespace cvBridge
 	}
 
 
-	Texture::~Texture()
+	CVTexture::~CVTexture()
 	{
 		delete this->image;
 	}
