@@ -2,77 +2,194 @@
 using System.Collections.Generic;
 using UnityEngine;
 using cvBridge;
+using System;
+
+[Serializable]
+class CameraParameter
+{
+    public float farWidth, nearWidth;
+    public float farDis;
+    public float fovV, fovH;
+    public float disToEarth;
+    public float ratio;
+    public float texWidth, texHeight;
+}
 
 //[ExecuteInEditMode]
 public class AVMController : MonoBehaviour
 {
     public Camera frontCamera;
+    public Camera leftCamera;
+    public Camera rightCamera;
+    public Camera backCamera;
+
     public CVTexture cvTexture;
 
     public float w = 1.8f;
     public float h = 6.0f;
-    public float wf = 8.0f;
-    public float hf = 16.0f;
-    public float Hf = 256;
-    
+    public float wext = 8.0f;
+    public float hext = 16.0f;
 
-    [Header("the property below is calculated.")]
-    public float Wf;
-    public float Ht;
-    public float Wt;
-    public float l;
-    public float fovV, fovHH,fovH;
-    public float fovVDegree;
-    public float fovHDegree;
-    public float ratio;
+    public float texHeight = 1024;
+    public float texWidth;
 
-    public int a, b;
 
-    [ContextMenu("Calculate")]
-    void Calculate()
+    [SerializeField]
+    CameraParameter frontCameraParam;
+    [SerializeField]
+    CameraParameter leftCameraParam;
+    [SerializeField]
+    CameraParameter rightCameraParam;
+    [SerializeField]
+    CameraParameter backCameraParam;
+
+
+
+    [ContextMenu("CalculateTextureWidth")]
+    void CalculateTextureWidth()
     {
-
-        l = Mathf.Sqrt(w*w*hf * hf / (wf * wf - w * w));
-        fovV = Mathf.Atan(hf / l);
-        fovHH = 2 * Mathf.Atan(w / 2 / l);
-        fovH = 2*Mathf.Atan(Mathf.Sqrt((Mathf.Tan(fovHH / 2) * Mathf.Tan(fovHH / 2) * (Mathf.Tan(fovV / 2) * Mathf.Tan(fovV / 2) + 1))));
-        //fovH = 2 * Mathf.Atan(Mathf.Tan(fovHH / 2) * Mathf.Tan(fovV / 2));
-        //fovH = fovHH;
-        ratio = Mathf.Tan(fovH / 2) / Mathf.Tan(fovV / 2);
-        Wf = (int)(Hf * ratio);
-        Ht = Hf / hf * (hf + hf + h);
-        Wt = Ht / (hf + hf + h) * wf;
-
-        fovVDegree = fovV * Mathf.Rad2Deg;
-        fovHDegree = fovH * Mathf.Rad2Deg;
-
-        a = (int)(hf / (h + hf + hf) * Ht);
-        b = (int)((wf - w) / 2 / wf * Wt);
-
-        frontCamera.transform.position = new Vector3(0.0f, l, -h / 2);
-        frontCamera.transform.rotation = Quaternion.EulerRotation(Mathf.PI / 2 + fovV / 2, 0, 0);
-        frontCamera.fieldOfView = Mathf.Rad2Deg * fovV;
-
-        CVRenderTexture rt = frontCamera.GetComponent<CVRenderTexture>();
-        if (rt)
-        {
-            rt.width = (int)Wf;
-            rt.height = (int)Hf;
-        }
-        cvTexture.width = (int)Wt;
-        cvTexture.height = (int)Ht;
+        texWidth = texHeight * (w + wext + wext) / (h + hext + hext);
     }
 
+    void CalCamera(float wt, float wb,  float h, ref float l, ref float fovV, ref float fovH, ref float ratio)
+    {
+        l = Mathf.Sqrt(wb * wb * h * h / (wt * wt - wb * wb));
+        fovV = Mathf.Atan(h / l);
+        float fovHH = 2 * Mathf.Atan(wb / 2 / l);
+        fovH = 2 * Mathf.Atan(Mathf.Sqrt((Mathf.Tan(fovHH / 2) * Mathf.Tan(fovHH / 2) * (Mathf.Tan(fovV / 2) * Mathf.Tan(fovV / 2) + 1))));
+        ratio = Mathf.Tan(fovH / 2) / Mathf.Tan(fovV / 2);
+
+    }
+
+
+    [ContextMenu("CalculateFrontCamera")]
+    void CalculateFrontCamera()
+    {
+        Camera camera = frontCamera;
+        CameraParameter param = frontCameraParam;
+
+        param.farWidth = w + wext + wext;
+        param.nearWidth = w;
+        param.farDis = hext;
+
+        CalCamera(param.farWidth, param.nearWidth, param.farDis,
+            ref param.disToEarth, ref param.fovV, ref param.fovH, ref param.ratio);
+        param.texHeight = 256;
+        param.texWidth = param.texHeight * param.ratio;
+
+
+        camera.transform.position = new Vector3(0, param.disToEarth, -h/2);
+        camera.transform.rotation = Quaternion.EulerRotation(Mathf.PI / 2 + param.fovV / 2, 0, 0);
+        camera.fieldOfView = Mathf.Rad2Deg * param.fovV;
+        CVRenderTexture rt = camera.GetComponent<CVRenderTexture>();
+        if (rt)
+        {
+            rt.width = (int)param.texWidth;
+            rt.height = (int)param.texHeight;
+        }
+    }
+
+    [ContextMenu("CalculateBackCamera")]
+    void CalculateBackCamera()
+    {
+        Camera camera = backCamera;
+        CameraParameter param = backCameraParam;
+
+        param.farWidth = w + wext + wext;
+        param.nearWidth = w;
+        param.farDis = hext;
+
+        CalCamera(param.farWidth, param.nearWidth, param.farDis,
+            ref param.disToEarth, ref param.fovV, ref param.fovH, ref param.ratio);
+        param.texHeight = 256;
+        param.texWidth = param.texHeight * param.ratio;
+
+
+        camera.transform.position = new Vector3(0, param.disToEarth, h / 2);
+        camera.transform.rotation = Quaternion.EulerRotation(Mathf.PI / 2 - param.fovV / 2, 0, 0);
+        camera.fieldOfView = Mathf.Rad2Deg * param.fovV;
+        CVRenderTexture rt = camera.GetComponent<CVRenderTexture>();
+        if (rt)
+        {
+            rt.width = (int)param.texWidth;
+            rt.height = (int)param.texHeight;
+        }
+    }
+
+    [ContextMenu("CalculateLeftCamera")]
+    void CalculateLeftCamera()
+    {
+
+        Camera camera = leftCamera;
+        CameraParameter param = leftCameraParam;
+
+        param.farWidth = hext + hext + h;
+        param.nearWidth = h;
+        param.farDis = wext;
+
+        CalCamera(param.farWidth, param.nearWidth, param.farDis,
+            ref param.disToEarth, ref param.fovV, ref param.fovH, ref param.ratio);
+        param.texHeight = 256;
+        param.texWidth = param.texHeight * param.ratio;
+
+        camera.transform.position = new Vector3(-w/2, param.disToEarth, 0);
+        camera.transform.rotation = Quaternion.EulerRotation(Mathf.PI / 2+ param.fovV/2, Mathf.PI/2, 0);
+        camera.fieldOfView = Mathf.Rad2Deg * param.fovV;
+        CVRenderTexture rt = camera.GetComponent<CVRenderTexture>();
+        if (rt)
+        {
+            rt.width = (int)param.texWidth;
+            rt.height = (int)param.texHeight;
+        }
+
+    }
+
+    [ContextMenu("CalculateRightCamera")]
+    void CalculateRightCamera()
+    {
+
+        Camera camera = rightCamera;
+        CameraParameter param = rightCameraParam;
+
+        param.farWidth = hext + hext + h;
+        param.nearWidth = h;
+        param.farDis = wext;
+
+        CalCamera(param.farWidth, param.nearWidth, param.farDis,
+            ref param.disToEarth, ref param.fovV, ref param.fovH, ref param.ratio);
+        param.texHeight = 256;
+        param.texWidth = param.texHeight * param.ratio;
+
+        camera.transform.position = new Vector3(w / 2, param.disToEarth, 0);
+        camera.transform.rotation = Quaternion.EulerRotation(Mathf.PI / 2 + param.fovV / 2, -Mathf.PI / 2, 0);
+        camera.fieldOfView = Mathf.Rad2Deg * param.fovV;
+        CVRenderTexture rt = camera.GetComponent<CVRenderTexture>();
+        if (rt)
+        {
+            rt.width = (int)param.texWidth;
+            rt.height = (int)param.texHeight;
+        }
+
+    }
+
+    [ContextMenu("CalculateAllCameras")]
+    void CalculateAllCameras()
+    {
+        CalculateFrontCamera();
+        CalculateLeftCamera();
+        CalculateRightCamera();
+        CalculateBackCamera();
+    }
 
     void Awake()
     {
 
-        CvBridgeDll.SetInteger(0, a);
-        CvBridgeDll.SetInteger(1, b);
-        CvBridgeDll.SetInteger(2, (int)Wf);
-        CvBridgeDll.SetInteger(3, (int)Hf);
-        CvBridgeDll.SetInteger(4, (int)Wt);
-        CvBridgeDll.SetInteger(5, (int)Ht);
+        CvBridgeDll.SetInteger(0, (int)w);
+        CvBridgeDll.SetInteger(1, (int)h);
+        CvBridgeDll.SetInteger(2, (int)wext);
+        CvBridgeDll.SetInteger(3, (int)hext);
+        //CvBridgeDll.SetInteger(4, (int)Wt);
+        //CvBridgeDll.SetInteger(5, (int)Ht);
     }
     //public void Update()
     //{

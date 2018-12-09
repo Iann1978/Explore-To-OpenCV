@@ -597,13 +597,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681440837}
-  m_LocalRotation: {x: 0.29883623, y: 0.64085644, z: -0.29883623, w: 0.64085644}
-  m_LocalPosition: {x: 1, y: 0.15, z: -0.1}
+  m_LocalRotation: {x: 0.6420447, y: 0.2962745, z: -0.6420447, w: 0.2962745}
+  m_LocalPosition: {x: -1, y: 2.5584085, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110503916}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!81 &681440839
 AudioListener:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 80.915276
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -667,8 +667,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cvTexIndex: 1
-  width: 1024
-  height: 512
+  width: 462
+  height: 256
 --- !u!1 &702184348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,8 +1141,8 @@ MonoBehaviour:
   createOnWake: 1
   cvTexIndex: 16
   texture: {fileID: 0}
-  width: 287
-  height: 664
+  width: 409
+  height: 819
 --- !u!64 &1519469448
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1655,30 +1655,62 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804706424}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1523b7c2ad89b548812e8deb1800bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frontCamera: {fileID: 2001127247}
+  leftCamera: {fileID: 681440840}
+  rightCamera: {fileID: 2133763389}
+  backCamera: {fileID: 1852890843}
   cvTexture: {fileID: 1519469447}
-  w: 1.8
+  w: 2
   h: 6
-  wf: 11.32
-  hf: 10.08
-  Hf: 256
-  Wf: 218
-  Ht: 664.381
-  Wt: 287.49207
-  l: 1.6234826
-  fovV: 1.4111079
-  fovHH: 1.0123748
-  fovH: 1.258839
-  fovVDegree: 80.850525
-  fovHDegree: 72.12616
-  ratio: 0.85489863
-  a: 256
-  b: 120
+  wext: 16
+  hext: 16
+  texHeight: 1024
+  texWidth: 916.2105
+  frontCameraParam:
+    farWidth: 34
+    nearWidth: 2
+    farDis: 16
+    fovV: 1.5119388
+    fovH: 1.9390641
+    disToEarth: 0.94280905
+    ratio: 1.5461644
+    texWidth: 395.81808
+    texHeight: 256
+  leftCameraParam:
+    farWidth: 38
+    nearWidth: 6
+    farDis: 16
+    fovV: 1.412238
+    fovH: 1.9904097
+    disToEarth: 2.5584085
+    ratio: 1.8071041
+    texWidth: 462.61865
+    texHeight: 256
+  rightCameraParam:
+    farWidth: 38
+    nearWidth: 6
+    farDis: 16
+    fovV: 1.412238
+    fovH: 1.9904097
+    disToEarth: 2.5584085
+    ratio: 1.8071041
+    texWidth: 462.61865
+    texHeight: 256
+  backCameraParam:
+    farWidth: 34
+    nearWidth: 2
+    farDis: 16
+    fovV: 1.5119388
+    fovH: 1.9390641
+    disToEarth: 0.94280905
+    ratio: 1.5461644
+    texWidth: 395.81808
+    texHeight: 256
 --- !u!1 &1828948945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,13 +1847,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852890840}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: -0.09, y: 0.15, z: 1.24}
+  m_LocalRotation: {x: 0.39623585, y: -0, z: -0, w: 0.91814876}
+  m_LocalPosition: {x: 0, y: 0.94280905, z: 3}
   m_LocalScale: {x: 1.0000005, y: 1.0000001, z: 1.0000006}
   m_Children: []
   m_Father: {fileID: 2110503916}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 45.03, y: 0, z: 0}
 --- !u!81 &1852890842
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1854,7 +1886,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 86.627716
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1884,9 +1916,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd19c181bb707747b7a9346c24aba01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cvTexIndex: 2
-  width: 1024
-  height: 512
+  cvTexIndex: 3
+  width: 395
+  height: 256
 --- !u!1 &2001127244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,13 +1945,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001127244}
-  m_LocalRotation: {x: 0.019863598, y: -0, z: -0, w: 0.9998027}
-  m_LocalPosition: {x: 0, y: 1.6234826, z: -3}
+  m_LocalRotation: {x: 0.9181488, y: -0, z: -0, w: 0.39623582}
+  m_LocalPosition: {x: 0, y: 0.94280905, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110503916}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 126.38, y: 450, z: 0}
 --- !u!81 &2001127246
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1952,7 +1984,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 80.850525
+  field of view: 86.627716
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1983,7 +2015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cvTexIndex: 0
-  width: 218
+  width: 395
   height: 256
 --- !u!1 &2098756761
 GameObject:
@@ -2105,8 +2137,8 @@ Transform:
   m_Children:
   - {fileID: 2001127245}
   - {fileID: 681440838}
-  - {fileID: 1852890841}
   - {fileID: 2133763387}
+  - {fileID: 1852890841}
   - {fileID: 1548652640}
   - {fileID: 534669905}
   - {fileID: 1244933475}
@@ -2139,13 +2171,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133763386}
-  m_LocalRotation: {x: 0.29883623, y: -0.64085644, z: 0.29883623, w: 0.64085644}
-  m_LocalPosition: {x: -1, y: 0.15, z: -0.1}
+  m_LocalRotation: {x: 0.6420447, y: -0.2962745, z: 0.6420447, w: 0.2962745}
+  m_LocalPosition: {x: 1, y: 2.5584085, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110503916}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 50, y: -90, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 49.542004, y: 90.00001, z: -179.99998}
 --- !u!81 &2133763388
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2178,7 +2210,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 80.915276
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -2208,9 +2240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd19c181bb707747b7a9346c24aba01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cvTexIndex: 3
-  width: 1024
-  height: 512
+  cvTexIndex: 2
+  width: 462
+  height: 256
 --- !u!1 &2134639536
 GameObject:
   m_ObjectHideFlags: 0
