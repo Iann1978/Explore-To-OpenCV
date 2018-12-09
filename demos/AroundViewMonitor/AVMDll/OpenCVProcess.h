@@ -1,10 +1,13 @@
 #pragma once
-class OpenCVProcess
+namespace cvBridge
 {
-public:
-	static int intValues[32];
-public:
-	virtual void Process(Mat** inputs, Mat** outputs);
+	class OpenCVProcess
+	{
+	public:
+		static int intValues[32];
+	public:
+		virtual void Process(Mat** inputs, Mat** outputs);
 
-};
+	};
+}
 

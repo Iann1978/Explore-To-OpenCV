@@ -14,6 +14,8 @@ using namespace cv; //°üº¬cvÃüÃû¿Õ¼ä
 
 #include "../OpenCVProcess.h"
 
+using namespace cvBridge;
+
 
 static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType eventType);
 

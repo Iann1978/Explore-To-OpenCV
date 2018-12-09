@@ -1,19 +1,23 @@
 #include "Texture.h"
 
-Texture*	Texture::cvTextures[32];
 
-Texture::Texture(int width, int height, GLuint texture)
+namespace cvBridge
 {
-	this->width = width;
-	this->height = height;
-	this->texture = texture;
-	this->image = new char[2048 * 2048 * 4];
-	mat = nullptr;
+	Texture*	Texture::cvTextures[32];
 
-}
+	Texture::Texture(int width, int height, GLuint texture)
+	{
+		this->width = width;
+		this->height = height;
+		this->texture = texture;
+		this->image = new char[2048 * 2048 * 4];
+		mat = nullptr;
+
+	}
 
 
-Texture::~Texture()
-{
-	delete this->image;
+	Texture::~Texture()
+	{
+		delete this->image;
+	}
 }
