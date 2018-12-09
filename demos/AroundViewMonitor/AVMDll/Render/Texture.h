@@ -13,7 +13,7 @@ namespace cvBridge
 		GLuint			texture = 0;
 		Mat				*mat = nullptr;
 		char			*image = nullptr;
-		static Texture*	cvTextures[32];
+		
 
 	public:
 		Texture(int width, int height, GLuint texture);

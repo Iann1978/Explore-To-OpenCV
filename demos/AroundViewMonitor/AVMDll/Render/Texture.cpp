@@ -3,7 +3,7 @@
 
 namespace cvBridge
 {
-	Texture*	Texture::cvTextures[32];
+
 
 	Texture::Texture(int width, int height, GLuint texture)
 	{

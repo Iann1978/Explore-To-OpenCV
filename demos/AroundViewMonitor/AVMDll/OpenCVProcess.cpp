@@ -9,6 +9,7 @@ using namespace std;
 namespace cvBridge
 {
 	int OpenCVProcess::intValues[32];
+	Texture*	OpenCVProcess::cvTextures[32];
 
 	void OpenCVProcess::Process(Mat** inputs, Mat** outputs)
 	{
@@ -21,11 +22,11 @@ namespace cvBridge
 
 
 
-		Mat& mat0 = *Texture::cvTextures[0]->mat;
-		Mat& mat1 = *Texture::cvTextures[1]->mat;
-		Mat& mat2 = *Texture::cvTextures[2]->mat;
-		Mat& mat3 = *Texture::cvTextures[3]->mat;
-		Mat& mat16 = *Texture::cvTextures[16]->mat;
+		Mat& mat0 = *cvTextures[0]->mat;
+		Mat& mat1 = *cvTextures[1]->mat;
+		Mat& mat2 = *cvTextures[2]->mat;
+		Mat& mat3 = *cvTextures[3]->mat;
+		Mat& mat16 = *cvTextures[16]->mat;
 
 		// transform mat0
 		Point2f srcTriangle[4];

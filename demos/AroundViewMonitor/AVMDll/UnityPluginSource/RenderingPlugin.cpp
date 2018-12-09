@@ -28,7 +28,7 @@ extern "C" void	UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginLoad(IUnit
 	s_UnityInterfaces = unityInterfaces;
 	s_Graphics = s_UnityInterfaces->Get<IUnityGraphics>();
 	s_Graphics->RegisterDeviceEventCallback(OnGraphicsDeviceEvent);
-	memset(Texture::cvTextures, sizeof(Texture*) * 32, 0);
+	memset(OpenCVProcess::cvTextures, sizeof(Texture*) * 32, 0);
 	// Run OnGraphicsDeviceEvent(initialize) manually on plugin load
 	OnGraphicsDeviceEvent(kUnityGfxDeviceEventInitialize);
 }
@@ -82,7 +82,7 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		// Convert CVTexture to cv::Mat
 		for (int i = 0; i < 32; i++)
 		{
-			Texture* texture = Texture::cvTextures[i];
+			Texture* texture = OpenCVProcess::cvTextures[i];
 			if (texture)
 			{	
 				RenderDevice::ins->Texture2Mat(texture);
@@ -96,26 +96,27 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		// Convert cv::Mat to CVTexture
 		for (int i = 16; i < 32; i++)
 		{
-			if (Texture::cvTextures[i])
+			if (OpenCVProcess::cvTextures[i])
 			{
-				RenderDevice::ins->Mat2Texture(Texture::cvTextures[i]);
+				RenderDevice::ins->Mat2Texture(OpenCVProcess::cvTextures[i]);
 			}
 		}
 
 		// Release resources
 		for (int i = 0; i < 32; i++)
 		{
-			if (Texture::cvTextures[i])
+			if (OpenCVProcess::cvTextures[i])
 			{
-				if (Texture::cvTextures[i]->mat)
+				if (OpenCVProcess::cvTextures[i]->mat)
 				{
-					delete Texture::cvTextures[i]->mat;
-					Texture::cvTextures[i]->mat = nullptr;
+					delete OpenCVProcess::cvTextures[i]->mat;
+					OpenCVProcess::cvTextures[i]->mat = nullptr;
 				}
 			}
 		}
 	}
 	
+
 	return;
 
 }
