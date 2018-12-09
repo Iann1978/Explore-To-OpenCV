@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <math.h>
 #include <vector>
-
+#include "RenderDevice.h"
 
 #include <opencv2/opencv.hpp> //Í·ÎÄ¼þ
 
@@ -81,27 +81,28 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		GLenum err;
 
 		// Convert CVTexture to cv::Mat
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < 32; i++)
 		{
 			Texture* texture = Texture::cvTextures[i];
 			if (texture)
 			{	
-				glBindTexture(GL_TEXTURE_2D, texture->texture);
-				err = glGetError();
-				glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->image);
-				err = glGetError();
-				texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
+				RenderDevice::ins->Texture2Mat(texture);
+				//glBindTexture(GL_TEXTURE_2D, texture->texture);
+				//err = glGetError();
+				//glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, texture->image);
+				//err = glGetError();
+				//texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
 			}
 		}
 
-		for (int i = 16; i < 32; i++)
-		{
-			Texture* texture = Texture::cvTextures[i];
-			if (texture)
-			{
-				texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
-			}
-		}
+		//for (int i = 16; i < 32; i++)
+		//{
+		//	Texture* texture = Texture::cvTextures[i];
+		//	if (texture)
+		//	{
+		//		texture->mat = new Mat(texture->height, texture->width, CV_8UC3, texture->image);
+		//	}
+		//}
 	
 
 		// Process cv::Mat
@@ -115,9 +116,10 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 		{
 			if (Texture::cvTextures[i])
 			{
-				Texture* cvTexture = Texture::cvTextures[i];
-				glBindTexture(GL_TEXTURE_2D, cvTexture->texture);
-				glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, cvTexture->width, cvTexture->height, GL_RGB, GL_UNSIGNED_BYTE, cvTexture->mat->ptr());
+				RenderDevice::ins->Mat2Texture(Texture::cvTextures[i]);
+				//Texture* cvTexture = Texture::cvTextures[i];
+				//glBindTexture(GL_TEXTURE_2D, cvTexture->texture);
+				//glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, cvTexture->width, cvTexture->height, GL_RGB, GL_UNSIGNED_BYTE, cvTexture->mat->ptr());
 			}
 		}
 
@@ -134,12 +136,6 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 				}
 			}
 		}
-
-		//RenderDevice::ins->SetRenderTarget(Texture::cvTextures[16]->texture);
-		////RenderDevice::ins->DrawTestTriangle();
-		////RenderDevice::ins->DrawTestQuad();
-		//RenderDevice::ins->Blit(tempTexture);
-		//RenderDevice::ins->SetRenderTarget(0);
 	}
 	
 	return;

@@ -6,6 +6,11 @@
 
 #include "GLEW\glew.h"
 
+
+#include <opencv2/opencv.hpp> //头文件
+#include "../Render/Texture.h"
+using namespace cv; //包含cv命名空间
+
 struct IUnityInterfaces;
 
 
@@ -22,6 +27,9 @@ public:
 
 	// Process general event like initialization, shutdown, device loss/reset etc.
 	virtual void ProcessDeviceEvent(UnityGfxDeviceEventType type, IUnityInterfaces* interfaces) = 0;
+
+	virtual void Texture2Mat(Texture *tex) = 0;
+	virtual void Mat2Texture(Texture *tex) = 0;
 
 	// Set render target for this device. 0 for draw unity screen.
 	virtual void SetRenderTarget(GLuint target) = 0;

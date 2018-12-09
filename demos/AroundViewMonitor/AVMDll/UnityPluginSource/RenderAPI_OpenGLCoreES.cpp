@@ -31,6 +31,9 @@ public:
 	virtual void DrawTestTriangle();
 	virtual void DrawTestQuad();
 	virtual void Blit(GLuint srcTexture);
+
+	virtual void Texture2Mat(Texture* tex);
+	virtual void Mat2Texture(Texture *tex);
 	Renderer_Triangle* rendererTriange = nullptr;
 	Renderer_Quad* rendererQuad = nullptr;
 
@@ -149,6 +152,19 @@ void RenderAPI_OpenGLCoreES::Blit(GLuint srcTexture)
 	rendererQuad->Draw();
 
 	glFlush();
+}
+
+void RenderAPI_OpenGLCoreES::Texture2Mat(Texture* tex)
+{
+	glBindTexture(GL_TEXTURE_2D, tex->texture);
+	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, tex->image);
+	tex->mat = new Mat(tex->height, tex->width, CV_8UC3, tex->image);
+}
+
+void RenderAPI_OpenGLCoreES::Mat2Texture(Texture *tex)
+{
+	glBindTexture(GL_TEXTURE_2D, tex->texture);
+	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, tex->width, tex->height, GL_RGB, GL_UNSIGNED_BYTE, tex->mat->ptr());
 }
 
 #endif // #if SUPPORT_OPENGL_UNIFIED
