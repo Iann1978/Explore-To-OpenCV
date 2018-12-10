@@ -100,6 +100,7 @@ void on_Matching( int, void* )
 	rectangle( g_resultImage, matchLocation, Point( matchLocation.x + g_templateImage.cols , matchLocation.y + g_templateImage.rows ), Scalar(0,0,255), 2, 8, 0 );
 
 	imshow( WINDOW_NAME1, srcImage );
+	imshow("template", g_templateImage);
 	imshow( WINDOW_NAME2, g_resultImage );
 
 }
