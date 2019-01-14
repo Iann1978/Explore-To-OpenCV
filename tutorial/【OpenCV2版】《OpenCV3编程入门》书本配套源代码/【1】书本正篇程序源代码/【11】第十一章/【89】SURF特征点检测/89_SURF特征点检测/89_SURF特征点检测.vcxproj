@@ -72,6 +72,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>E:\git\opencv_2_4\build\include;E:\git\opencv_2_4\build\include\opencv;E:\git\opencv_2_4\build\include\opencv2;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\git\opencv_2_4\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>E:\git\Explore-To-OpenCV\tutorial\x64\Debug\OpenCV2</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -103,6 +106,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_core2413d.lib;opencv_highgui2413d.lib;opencv_features2d2413d.lib;opencv_contrib2413d.lib;opencv_gpu2413d.lib;opencv_nonfree2413d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
