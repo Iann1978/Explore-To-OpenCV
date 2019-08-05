@@ -27,6 +27,14 @@ struct CurlingArenaRebuildingData
 {
 	Mat				srcImage;
 	EllipseData		bigCircle;
+	Vec2f			topEdge;
+	Vec2f			leftEdge;
+	Vec2f			rightEdge;
+
+	Point			topLeftPoint;
+	Point			topRightPoint;
+	Point			centerPoint;
+
 	void Reset()
 	{
 		bigCircle.Reset();

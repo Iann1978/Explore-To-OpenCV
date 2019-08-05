@@ -12,11 +12,13 @@ static Mat midImage, dstImage;
 static Vec2f resultLine;
 static void refreshIceArena_TopEdge(int debug, void* data)
 {
-	Mat& srcImage = *(Mat*)data;
+	CurlingArenaRebuildingData& rebuildingData = *(CurlingArenaRebuildingData*)data;
+
+	Mat& srcImage = rebuildingData.srcImage;
 
 	Canny(srcImage, midImage, Canny_threshold0, Canny_threshold1, 3);
 	cvtColor(midImage, dstImage, CV_GRAY2BGR);
-	if (debug) imshow("IceArena_TopEdge_midImage", midImage);
+	if (debug>1) imshow("IceArena_TopEdge_midImage", midImage);
 
 	vector<Vec2f> lines;
 	HoughLines(midImage, lines, 1, CV_PI / 360, HoughLines_threshold, 0, 0);
@@ -40,15 +42,16 @@ static void refreshIceArena_TopEdge(int debug, void* data)
 		}
 
 	}
-	if (debug) imshow("IceArena_TopEdge_dstImage", dstImage);
+	rebuildingData.topEdge = resultLine;
+	if (debug>0) imshow("IceArena_TopEdge_dstImage", dstImage);
 }
 
 void FindIceArena_TopEdge(CurlingArenaRebuildingData& rebuildingData)
 {
-	refreshIceArena_TopEdge(0, &rebuildingData.srcImage);
-	createTrackbar("Canny_threshold1", "IceArena_TopEdge_dstImage", &Canny_threshold1, 500, refreshIceArena_TopEdge, &rebuildingData.srcImage);
-	createTrackbar("Canny_threshold0", "IceArena_TopEdge_dstImage", &Canny_threshold0, 500, refreshIceArena_TopEdge, &rebuildingData.srcImage);
-	createTrackbar("HoughLines_threshold", "IceArena_TopEdge_dstImage", &HoughLines_threshold, 500, refreshIceArena_TopEdge, &rebuildingData.srcImage);
+	refreshIceArena_TopEdge(1, &rebuildingData);
+	createTrackbar("Canny_threshold1", "IceArena_TopEdge_dstImage", &Canny_threshold1, 500, refreshIceArena_TopEdge, &rebuildingData);
+	createTrackbar("Canny_threshold0", "IceArena_TopEdge_dstImage", &Canny_threshold0, 500, refreshIceArena_TopEdge, &rebuildingData);
+	createTrackbar("HoughLines_threshold", "IceArena_TopEdge_dstImage", &HoughLines_threshold, 500, refreshIceArena_TopEdge, &rebuildingData);
 	//return resultLine;
 }
 

@@ -89,7 +89,7 @@ static void refreshContoursImage(int debug, void* data)
 	edgeImage = processImages.edgeImage;
 	int type = edgeImage.type();
 	int depth = edgeImage.depth();
-	if (debug) imshow("IceArena_BigCircle_Contours_edgeImage", edgeImage);
+	if (debug>1) imshow("IceArena_BigCircle_Contours_edgeImage", edgeImage);
 
 	// get contours and contours image
 	vector<vector<Point>> contours;
@@ -99,7 +99,7 @@ static void refreshContoursImage(int debug, void* data)
 	{
 		drawContours(contoursImage, contours, (int)i, Scalar::all(255), 1, 8);
 	}
-	if (debug) imshow("IceArena_BigCircle_Contours_contoursImage", contoursImage);
+	if (debug > 1) imshow("IceArena_BigCircle_Contours_contoursImage", contoursImage);
 	
 
 	// Get ellips image
@@ -113,6 +113,7 @@ static void refreshContoursImage(int debug, void* data)
 
 		//ÍÖÔ²ÄâºÏ
 		RotatedRect box = fitEllipse(contours[i]);
+
 
 		// ¹ýÂËÎ»ÖÃ
 		if (!filterPosition(box))
@@ -137,13 +138,13 @@ static void refreshContoursImage(int debug, void* data)
 		rebuildingData.bigCircle.param = ep;
 		rebuildingData.bigCircle.contours.push_back(contours[i]);
 	}
-	if (debug) imshow("IceArena_BigCircle_Contours_ellipsImage", ellipsImage);
+	if (debug>0) imshow("IceArena_BigCircle_Contours_ellipsImage", ellipsImage);
 }
 
 void FindIceArena_BigCircle(CurlingArenaRebuildingData& rebuildingData)
 {
 	//processImages.srcImage = rebuildingData.srcImage;
-	refreshEdgeImage(1, &rebuildingData);
+	refreshEdgeImage(0, &rebuildingData);
 	createTrackbar("Canny_threshold1", "IceArena_BigCircle_edgeImage", &Canny_threshold1, 200, refreshEdgeImage, &rebuildingData);
 	createTrackbar("Canny_threshold2", "IceArena_BigCircle_edgeImage", &Canny_threshold2, 500, refreshEdgeImage, &rebuildingData);
 
@@ -151,7 +152,7 @@ void FindIceArena_BigCircle(CurlingArenaRebuildingData& rebuildingData)
 	//createTrackbar("cornerHarris_k", "IceArena_BigCircle_cornerImage2", &cornerHarris_k, 100, refreshCornerImage, &srcImage);
 
 
-	refreshContoursImage(1, 0);
+	refreshContoursImage(1, &rebuildingData);
 }
 
 

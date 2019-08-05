@@ -7,8 +7,6 @@ static struct ProcessImages
 {
 	Mat srcImage;
 	Mat edgeImage;
-	vector<vector<Point>> bigCircleContours;
-	RotatedRect bigEllipsRect;
 };
 static ProcessImages processImages;
 
@@ -22,7 +20,7 @@ static void refreshEdgeImage(int debug, void* data)
 	Canny(greyImage, edgeImage, Canny_threshold1, Canny_threshold2, 3);
 	edgeImage.copyTo(processImages.edgeImage);
 	//processImages.edgeImage = edgeImage;
-	if (debug) imshow("IceArena_MiddleCircle_edgeImage", edgeImage);
+	if (debug > 1) imshow("IceArena_MiddleCircle_edgeImage", edgeImage);
 }
 
 static int cornerHarris_k = 7;
@@ -81,64 +79,9 @@ static bool filterMatching(RotatedRect ellipsBox, EllipsePara ellipsParam, std::
 	return dev < dev0_threshold;
 }
 
-static void refreshContoursImage_BigCircleStep(int debug, void* data)
-{	
-	Mat edgeImage, contoursImage, ellipsImage;
-	
-	// Get edge image
-	processImages.edgeImage.copyTo(edgeImage);
-	//int type = edgeImage.type();
-	//int depth = edgeImage.depth();
-	//if (debug) imshow("IceArena_MiddirCircle_Contours_edgeImage", edgeImage);
 
-	// get contours and contours image
-	vector<vector<Point>> contours;
-	findContours(edgeImage, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
-	contoursImage = Mat::zeros(edgeImage.size(), CV_8UC3);
-	for (size_t i = 0; i < contours.size(); i++)
-	{
-		drawContours(contoursImage, contours, (int)i, Scalar::all(255), 1, 8);
-	}
-	if (debug) imshow("IceArena_MiddirCircle_Contours(BigCircleStep)_contoursImage", contoursImage);
-	
 
-	// Get ellips image
-	ellipsImage = Mat::zeros(edgeImage.size(), CV_8UC3);
-	for (size_t i = 0; i < contours.size(); i++)
-	{
-		//拟合的点至少为6
-		size_t count = contours[i].size();
-		if (count < 6)
-			continue;
-
-		//椭圆拟合
-		RotatedRect box = fitEllipse(contours[i]);
-
-		// 过滤位置
-		if (!filterPosition(box))
-			continue;
-
-		// 过滤形状
-		if (!filterShape(box))
-			continue;
-
-		// 计算椭圆参数
-		EllipsePara ep;
-		getEllipsePara(box, ep);
-
-		// 椭圆拟合度过滤
-		if (!filterMatching(box, ep, contours[i]))
-			continue;
-
-		processImages.bigCircleContours.push_back(contours[i]);
-		processImages.bigEllipsRect = box;
-		drawContours(ellipsImage, contours, (int)i, Scalar::all(255), 1, 8);
-		ellipse(ellipsImage, box, Scalar(0, 0, 255), 1, CV_AA);
-	}
-	if (debug) imshow("IceArena_MiddieCircle_Contours(BigCircleStep)_ellipsImage", ellipsImage);
-}
-
-static bool filterPositionForMiddleCircle(RotatedRect ellipsBox)
+static bool filterPositionForMiddleCircle(RotatedRect ellipsBox, CurlingArenaRebuildingData& rebuildingData)
 {
 	// 位置过滤
 	if (ellipsBox.center.x < 150)
@@ -150,8 +93,8 @@ static bool filterPositionForMiddleCircle(RotatedRect ellipsBox)
 	if (ellipsBox.center.y > 200)
 		return false;
 
-	float dx = ellipsBox.center.x - processImages.bigEllipsRect.center.x;
-	float dy = ellipsBox.center.y - processImages.bigEllipsRect.center.y;
+	float dx = ellipsBox.center.x - rebuildingData.bigCircle.box.center.x;
+	float dy = ellipsBox.center.y - rebuildingData.bigCircle.box.center.y;
 	if ((dx * dx + dy * dy) > 100)
 		return false;
 
@@ -172,17 +115,20 @@ static bool filterShapeForMiddleCircle(RotatedRect ellipsBox)
 
 static void refreshContoursImage_MiddleCircleStep(int debug, void* data)
 {
+	CurlingArenaRebuildingData& rebuildingData = *(CurlingArenaRebuildingData*)data;
+
+
 	Mat edgeImage0, edgeImage, contoursImage, ellipsImage;
 
 	// Get edge image
 	processImages.edgeImage.copyTo(edgeImage0);
 	int type = edgeImage0.type();
 	int depth = edgeImage0.depth();
-	if (debug) imshow("edgeImage0", edgeImage0);
+	if (debug > 1) imshow("edgeImage0", edgeImage0);
 
 	edgeImage0.copyTo(edgeImage);
-	drawContours(edgeImage, processImages.bigCircleContours, (int)0, Scalar::all(0), 1, 8);
-	if (debug) imshow("edgeImage", edgeImage);
+	drawContours(edgeImage, rebuildingData.bigCircle.contours, (int)0, Scalar::all(0), 1, 8);
+	if (debug > 1) imshow("edgeImage", edgeImage);
 
 	// get contours and contours image
 	vector<vector<Point>> contours;
@@ -192,7 +138,7 @@ static void refreshContoursImage_MiddleCircleStep(int debug, void* data)
 	{
 		drawContours(contoursImage, contours, (int)i, Scalar::all(255), 1, 8);
 	}
-	if (debug) imshow("contoursImage", contoursImage);
+	if (debug>1) imshow("contoursImage", contoursImage);
 
 
 	// Get ellips image
@@ -208,7 +154,7 @@ static void refreshContoursImage_MiddleCircleStep(int debug, void* data)
 		RotatedRect box = fitEllipse(contours[i]);
 
 		// 过滤位置
-		if (!filterPositionForMiddleCircle(box))
+		if (!filterPositionForMiddleCircle(box, rebuildingData))
 			continue;
 
 		// 过滤形状
@@ -227,7 +173,7 @@ static void refreshContoursImage_MiddleCircleStep(int debug, void* data)
 		drawContours(ellipsImage, contours, (int)i, Scalar::all(255), 1, 8);
 		ellipse(ellipsImage, box, Scalar(0, 0, 255), 1, CV_AA);
 	}
-	if (debug) imshow("ellipsImage", ellipsImage);
+	if (debug>0) imshow("ellipsImage", ellipsImage);
 
 }
 void FindIceArena_MiddleCircle(CurlingArenaRebuildingData& rebuildingData)
@@ -241,10 +187,8 @@ void FindIceArena_MiddleCircle(CurlingArenaRebuildingData& rebuildingData)
 	
 
 
-	refreshContoursImage_BigCircleStep(1, 0);
 
-
-	refreshContoursImage_MiddleCircleStep(1, 0);
+	refreshContoursImage_MiddleCircleStep(1, &rebuildingData);
 }
 
 

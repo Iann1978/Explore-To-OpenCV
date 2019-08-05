@@ -12,7 +12,8 @@ static Mat midImage, dstImage;
 static Vec2f resultLine;
 static void refreshIceArena_RightEdge(int debug, void* data)
 {
-	Mat& srcImage = *(Mat*)data;
+	CurlingArenaRebuildingData& rebuildingData = *(CurlingArenaRebuildingData*)data;
+	Mat& srcImage = rebuildingData.srcImage;
 
 	Canny(srcImage, midImage, Canny_threshold0, Canny_threshold1, 3);
 	cvtColor(midImage, dstImage, CV_GRAY2BGR);
@@ -28,7 +29,7 @@ static void refreshIceArena_RightEdge(int debug, void* data)
 		}
 	}
 
-	if (debug) imshow("IceArena_RightEdge_midImage", midImage);
+	if (debug>1) imshow("IceArena_RightEdge_midImage", midImage);
 
 	vector<Vec2f> lines;
 	HoughLines(midImage, lines, 1, CV_PI / 720, HoughLines_threshold, 0, 0);
@@ -56,16 +57,16 @@ static void refreshIceArena_RightEdge(int debug, void* data)
 		}
 
 	}
-
-	if (debug) imshow("IceArena_RightEdge_dstImage", dstImage);
+	rebuildingData.rightEdge = resultLine;
+	if (debug>0) imshow("IceArena_RightEdge_dstImage", dstImage);
 }
 
 void FindIceArena_RightEdge(CurlingArenaRebuildingData& rebuildingData)
 {
-	refreshIceArena_RightEdge(0, &rebuildingData.srcImage);
-	createTrackbar("Canny_threshold1", "IceArena_RightEdge_dstImage", &Canny_threshold1, 500, refreshIceArena_RightEdge, &rebuildingData.srcImage);
-	createTrackbar("Canny_threshold0", "IceArena_RightEdge_dstImage", &Canny_threshold0, 500, refreshIceArena_RightEdge, &rebuildingData.srcImage);
-	createTrackbar("HoughLines_threshold", "IceArena_RightEdge_dstImage", &HoughLines_threshold, 500, refreshIceArena_RightEdge, &rebuildingData.srcImage);
+	refreshIceArena_RightEdge(1, &rebuildingData);
+	createTrackbar("Canny_threshold1", "IceArena_RightEdge_dstImage", &Canny_threshold1, 500, refreshIceArena_RightEdge, &rebuildingData);
+	createTrackbar("Canny_threshold0", "IceArena_RightEdge_dstImage", &Canny_threshold0, 500, refreshIceArena_RightEdge, &rebuildingData);
+	createTrackbar("HoughLines_threshold", "IceArena_RightEdge_dstImage", &HoughLines_threshold, 500, refreshIceArena_RightEdge, &rebuildingData);
 }
 
 
