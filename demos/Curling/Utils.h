@@ -3,7 +3,7 @@
 #include<opencv2/imgproc/imgproc.hpp>
 using namespace cv; //°üº¬cvÃüÃû¿Õ¼ä
 
-static struct EllipsePara
+struct EllipsePara
 {
 	Point2f c;
 	float A;
@@ -12,6 +12,26 @@ static struct EllipsePara
 	float F;
 };
 
+struct EllipseData
+{
+	RotatedRect box;
+	EllipsePara param;
+	vector<vector<Point>> contours;
+	void Reset()
+	{
+		contours.clear();
+	}
+};
+
+struct CurlingArenaRebuildingData
+{
+	Mat				srcImage;
+	EllipseData		bigCircle;
+	void Reset()
+	{
+		bigCircle.Reset();
+	}
+};
 void getEllipsePara(RotatedRect& ellipsemege, EllipsePara& EP_t);
 void myMeanStdDev(std::vector<float>& array, float& mean, float& dev);
 void myMeanStdDev(std::vector<cv::Point>& array, Point& mean, float& dev);

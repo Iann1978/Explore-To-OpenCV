@@ -1,5 +1,6 @@
 #include <opencv2/opencv.hpp> //头文件
 #include<opencv2/imgproc/imgproc.hpp>
+#include "Utils.h"
 using namespace cv; //包含cv命名空间
 
 
@@ -9,7 +10,7 @@ static int Canny_threshold0 = 113;
 static int HoughLines_threshold = 255;
 static Mat midImage, dstImage;
 static Vec2f resultLine;
-static void refreshIceArena_LeftEdge(int, void* data)
+static void refreshIceArena_LeftEdge(int debug, void* data)
 {
 	Mat& srcImage = *(Mat*)data;
 
@@ -27,7 +28,7 @@ static void refreshIceArena_LeftEdge(int, void* data)
 		}
 	}
 
-	imshow("IceArena_LeftEdge_midImage", midImage);
+	if (debug) imshow("IceArena_LeftEdge_midImage", midImage);
 
 	vector<Vec2f> lines;
 	HoughLines(midImage, lines, 1, CV_PI / 720, HoughLines_threshold, 0, 0);
@@ -56,16 +57,15 @@ static void refreshIceArena_LeftEdge(int, void* data)
 
 	}
 
-	imshow("IceArena_LeftEdge_dstImage", dstImage);
+	if (debug) imshow("IceArena_LeftEdge_dstImage", dstImage);
 }
 
-Vec2f FindIceArena_LeftEdge(Mat& srcImage)
+void FindIceArena_LeftEdge(CurlingArenaRebuildingData& rebuildingData)
 {
-	refreshIceArena_LeftEdge(0, &srcImage);
-	createTrackbar("Canny_threshold1", "IceArena_LeftEdge_dstImage", &Canny_threshold1, 500, refreshIceArena_LeftEdge, &srcImage);
-	createTrackbar("Canny_threshold0", "IceArena_LeftEdge_dstImage", &Canny_threshold0, 500, refreshIceArena_LeftEdge, &srcImage);
-	createTrackbar("HoughLines_threshold", "IceArena_LeftEdge_dstImage", &HoughLines_threshold, 500, refreshIceArena_LeftEdge, &srcImage);
-	return resultLine;
+	refreshIceArena_LeftEdge(0, &rebuildingData.srcImage);
+	createTrackbar("Canny_threshold1", "IceArena_LeftEdge_dstImage", &Canny_threshold1, 500, refreshIceArena_LeftEdge, &rebuildingData.srcImage);
+	createTrackbar("Canny_threshold0", "IceArena_LeftEdge_dstImage", &Canny_threshold0, 500, refreshIceArena_LeftEdge, &rebuildingData.srcImage);
+	createTrackbar("HoughLines_threshold", "IceArena_LeftEdge_dstImage", &HoughLines_threshold, 500, refreshIceArena_LeftEdge, &rebuildingData.srcImage);
 }
 
 

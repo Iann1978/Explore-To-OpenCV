@@ -230,19 +230,15 @@ static void refreshContoursImage_MiddleCircleStep(int debug, void* data)
 	if (debug) imshow("ellipsImage", ellipsImage);
 
 }
-
-void FindIceArena_MiddleCircle(Mat& srcImage)
+void FindIceArena_MiddleCircle(CurlingArenaRebuildingData& rebuildingData)
 {
-	processImages.srcImage = srcImage;
+	processImages.srcImage = rebuildingData.srcImage;
 
 	// Get edge image
-	refreshEdgeImage(1, &srcImage);	
-	createTrackbar("Canny_threshold1", "IceArena_MiddleCircle_edgeImage", &Canny_threshold1, 200, refreshEdgeImage, &srcImage);
-	createTrackbar("Canny_threshold2", "IceArena_MiddleCircle_edgeImage", &Canny_threshold2, 500, refreshEdgeImage, &srcImage);
+	refreshEdgeImage(1, &rebuildingData.srcImage);
+	createTrackbar("Canny_threshold1", "IceArena_MiddleCircle_edgeImage", &Canny_threshold1, 200, refreshEdgeImage, &rebuildingData.srcImage);
+	createTrackbar("Canny_threshold2", "IceArena_MiddleCircle_edgeImage", &Canny_threshold2, 500, refreshEdgeImage, &rebuildingData.srcImage);
 	
-	// Get corner image
-	//refreshCornerImage(0, &srcImage);
-	//createTrackbar("cornerHarris_k", "IceArena_MiddirCircle_cornerImage2", &cornerHarris_k, 100, refreshCornerImage, &srcImage);
 
 
 	refreshContoursImage_BigCircleStep(1, 0);

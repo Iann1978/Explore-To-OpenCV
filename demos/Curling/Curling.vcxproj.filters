@@ -15,16 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EllipsFillting.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Corner.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Lines.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FindEdges.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">

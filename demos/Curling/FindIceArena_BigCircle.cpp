@@ -14,7 +14,8 @@ static int Canny_threshold1 = 107;
 static int Canny_threshold2 = 200;
 static void refreshEdgeImage(int debug, void* data)
 {
-	Mat& srcImage = *(Mat*)data;
+	CurlingArenaRebuildingData& rebuildingData = *(CurlingArenaRebuildingData *)data;
+	Mat& srcImage = rebuildingData.srcImage;
 	Mat greyImage, edgeImage;
 	cvtColor(srcImage, greyImage, CV_BGR2GRAY);
 	Canny(greyImage, edgeImage, Canny_threshold1, Canny_threshold2, 3);
@@ -80,6 +81,8 @@ static bool filterMatching(RotatedRect ellipsBox, EllipsePara ellipsParam, std::
 
 static void refreshContoursImage(int debug, void* data)
 {	
+	CurlingArenaRebuildingData& rebuildingData = *(CurlingArenaRebuildingData*)data;
+
 	Mat edgeImage, contoursImage, ellipsImage;
 	
 	// Get edge image
@@ -129,16 +132,20 @@ static void refreshContoursImage(int debug, void* data)
 
 		drawContours(ellipsImage, contours, (int)i, Scalar::all(255), 1, 8);
 		ellipse(ellipsImage, box, Scalar(0, 0, 255), 1, CV_AA);
+
+		rebuildingData.bigCircle.box = box;
+		rebuildingData.bigCircle.param = ep;
+		rebuildingData.bigCircle.contours.push_back(contours[i]);
 	}
 	if (debug) imshow("IceArena_BigCircle_Contours_ellipsImage", ellipsImage);
 }
 
-void FindIceArena_BigCircle(Mat& srcImage)
+void FindIceArena_BigCircle(CurlingArenaRebuildingData& rebuildingData)
 {
-	processImages.srcImage = srcImage;
-	refreshEdgeImage(1, &srcImage);	
-	createTrackbar("Canny_threshold1", "IceArena_BigCircle_edgeImage", &Canny_threshold1, 200, refreshEdgeImage, &srcImage);
-	createTrackbar("Canny_threshold2", "IceArena_BigCircle_edgeImage", &Canny_threshold2, 500, refreshEdgeImage, &srcImage);
+	//processImages.srcImage = rebuildingData.srcImage;
+	refreshEdgeImage(1, &rebuildingData);
+	createTrackbar("Canny_threshold1", "IceArena_BigCircle_edgeImage", &Canny_threshold1, 200, refreshEdgeImage, &rebuildingData);
+	createTrackbar("Canny_threshold2", "IceArena_BigCircle_edgeImage", &Canny_threshold2, 500, refreshEdgeImage, &rebuildingData);
 
 	//refreshCornerImage(0, &srcImage);
 	//createTrackbar("cornerHarris_k", "IceArena_BigCircle_cornerImage2", &cornerHarris_k, 100, refreshCornerImage, &srcImage);

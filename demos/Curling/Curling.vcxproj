@@ -154,15 +154,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Corner.cpp" />
     <ClCompile Include="FindIceArena_BigCircle.cpp" />
     <ClCompile Include="FindIceArena_LeftEdge.cpp" />
     <ClCompile Include="FindIceArena_MiddleCircle.cpp" />
     <ClCompile Include="FindIceArena_RightEdge.cpp" />
     <ClCompile Include="FindIceArena_TopEdge.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="EllipsFillting.cpp" />
-    <ClCompile Include="FindEdges.cpp" />
     <ClCompile Include="Lines.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
