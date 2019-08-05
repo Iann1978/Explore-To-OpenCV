@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "【OpenCV2版】", "【OpenCV2版】", "{2AEDF5B0-E5E7-4ED2-B047-8DDD44EA6A9D}"
 EndProject
@@ -46,9 +46,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "18_基本鼠标操作", "【OpenCV2版】《OpenCV3编程入门》书本配套源代码\【1】书本正篇程序源代码\【3】第三章\【18】基本鼠标操作\18_基本鼠标操作\18_基本鼠标操作.vcxproj", "{B817F5C7-DA92-4B07-8780-EB9871DEE837}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "【04】第四章", "【04】第四章", "{5CE1DE6B-3705-4A32-B346-E86E1FFB2ACA}"
-	ProjectSection(SolutionItems) = preProject
-		【OpenCV2版】《OpenCV3编程入门》书本配套源代码\【1】书本正篇程序源代码\【4】第四章\【20】用OpenCV进行基本绘图\20_用OpenCV进行基本绘图.sln = 【OpenCV2版】《OpenCV3编程入门》书本配套源代码\【1】书本正篇程序源代码\【4】第四章\【20】用OpenCV进行基本绘图\20_用OpenCV进行基本绘图.sln
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "19_基础图像容器Mat", "【OpenCV2版】《OpenCV3编程入门》书本配套源代码\【1】书本正篇程序源代码\【4】第四章\【19】基础图像容器Mat\19_基础图像容器Mat\19_基础图像容器Mat.vcxproj", "{E1EACF27-F9EE-4BAB-9664-ABD160CBE57E}"
 EndProject
@@ -225,6 +222,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "103_卡尔曼滤波", "【OpenCV2版】《OpenCV3编程入门》书本配套源代码\【2】附赠示例程序源代码\3.【卡尔曼滤波】kalman\卡尔曼滤波\卡尔曼滤波.vcxproj", "{513035E9-5C52-4641-8248-E00DC3AD0C4A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "104_渐变过渡各种图形滤波并输出文字(median_blur)", "【OpenCV2版】《OpenCV3编程入门》书本配套源代码\【2】附赠示例程序源代码\4.【渐变过渡各种图形滤波并输出文字】median_blur\median_blur\median_blur.vcxproj", "{79B74E08-9FDF-4B9F-B36B-69F1E10E5716}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "20_用OpenCV进行基本绘图", "【OpenCV2版】《OpenCV3编程入门》书本配套源代码\【1】书本正篇程序源代码\【4】第四章\【20】用OpenCV进行基本绘图\20_用OpenCV进行基本绘图\20_用OpenCV进行基本绘图.vcxproj", "{15C3455E-0D08-4B1E-BECD-07736AA4CD70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -899,6 +898,12 @@ Global
 		{79B74E08-9FDF-4B9F-B36B-69F1E10E5716}.Release|x64.ActiveCfg = Release|Win32
 		{79B74E08-9FDF-4B9F-B36B-69F1E10E5716}.Release|x86.ActiveCfg = Release|Win32
 		{79B74E08-9FDF-4B9F-B36B-69F1E10E5716}.Release|x86.Build.0 = Release|Win32
+		{15C3455E-0D08-4B1E-BECD-07736AA4CD70}.Debug|x64.ActiveCfg = Debug|x64
+		{15C3455E-0D08-4B1E-BECD-07736AA4CD70}.Debug|x86.ActiveCfg = Debug|Win32
+		{15C3455E-0D08-4B1E-BECD-07736AA4CD70}.Debug|x86.Build.0 = Debug|Win32
+		{15C3455E-0D08-4B1E-BECD-07736AA4CD70}.Release|x64.ActiveCfg = Release|Win32
+		{15C3455E-0D08-4B1E-BECD-07736AA4CD70}.Release|x86.ActiveCfg = Release|Win32
+		{15C3455E-0D08-4B1E-BECD-07736AA4CD70}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1013,6 +1018,7 @@ Global
 		{ABB96AAA-E4A4-4665-9BA6-84A7F9CCD60A} = {A2D399DA-CF7A-406A-94D2-B7FF013B2764}
 		{513035E9-5C52-4641-8248-E00DC3AD0C4A} = {A2D399DA-CF7A-406A-94D2-B7FF013B2764}
 		{79B74E08-9FDF-4B9F-B36B-69F1E10E5716} = {A2D399DA-CF7A-406A-94D2-B7FF013B2764}
+		{15C3455E-0D08-4B1E-BECD-07736AA4CD70} = {5CE1DE6B-3705-4A32-B346-E86E1FFB2ACA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6CDDBD16-397A-4D58-AF90-EEE4A7AE124D}
