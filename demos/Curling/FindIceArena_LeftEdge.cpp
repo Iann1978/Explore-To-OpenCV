@@ -63,7 +63,7 @@ static void refreshIceArena_LeftEdge(int debug, void* data)
 
 void FindIceArena_LeftEdge(CurlingArenaRebuildingData& rebuildingData)
 {
-	refreshIceArena_LeftEdge(1, &rebuildingData);
+	refreshIceArena_LeftEdge(0, &rebuildingData);
 	createTrackbar("Canny_threshold1", "IceArena_LeftEdge_dstImage", &Canny_threshold1, 500, refreshIceArena_LeftEdge, &rebuildingData);
 	createTrackbar("Canny_threshold0", "IceArena_LeftEdge_dstImage", &Canny_threshold0, 500, refreshIceArena_LeftEdge, &rebuildingData);
 	createTrackbar("HoughLines_threshold", "IceArena_LeftEdge_dstImage", &HoughLines_threshold, 500, refreshIceArena_LeftEdge, &rebuildingData);

@@ -11,6 +11,8 @@ void FindIceArena_LeftEdge(CurlingArenaRebuildingData& rebuildingData);
 void FindIceArena_RightEdge(CurlingArenaRebuildingData& rebuildingData);
 void FindIceArena_BigCircle(CurlingArenaRebuildingData& rebuildingData);
 void FindIceArena_MiddleCircle(CurlingArenaRebuildingData& rebuildingData);
+void FindCurlings(CurlingArenaRebuildingData& rebuildingData);
+
 void RebuildIceArena(CurlingArenaRebuildingData& rebuildingData);
 
 int main()
@@ -24,11 +26,15 @@ int main()
 		rebuildingData.Reset();
 		rebuildingData.srcImage = srcImage;
 
+		
 		FindIceArena_TopEdge(rebuildingData);
 		FindIceArena_LeftEdge(rebuildingData);
 		FindIceArena_RightEdge(rebuildingData);
 		FindIceArena_BigCircle(rebuildingData);
 		FindIceArena_MiddleCircle(rebuildingData);
+
+		FindCurlings(rebuildingData);
+
 		RebuildIceArena(rebuildingData);
 		continue;
 	} while (waitKey(0) != 0x1b);

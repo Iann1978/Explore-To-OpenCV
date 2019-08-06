@@ -15,26 +15,44 @@ void getEllipsePara(RotatedRect& ellipsemege, EllipsePara& EP_t)
 	EP_t.F = (-1.0) * a * a * b * b;
 }
 
+//void myMeanStdDev(std::vector<float>& array, float& mean, float& dev)
+//{
+//	cv::Mat   img = cv::Mat_<float>(array.size(), 1);
+//	for (int i = 0; i < array.size(); i++)
+//	{
+//		img.at<float>(i, 0) = array[i];
+//	}
+//
+//
+//	cv::Scalar     _mean;
+//	cv::Scalar     _dev;
+//
+//	cv::meanStdDev(img, _mean, _dev);
+//	mean = _mean.val[0];
+//	dev = _dev.val[0];
+//	//std::cout << m << ",\t" << s;
+//
+//}
+
 void myMeanStdDev(std::vector<float>& array, float& mean, float& dev)
 {
-	cv::Mat   img = cv::Mat_<float>(array.size(), 1);
+	mean = 0;
 	for (int i = 0; i < array.size(); i++)
 	{
-		img.at<float>(i, 0) = array[i];
+		mean += array[i];
 	}
+	mean = mean / array.size();
 
-
-	cv::Scalar     _mean;
-	cv::Scalar     _dev;
-
-	cv::meanStdDev(img, _mean, _dev);
-	mean = _mean.val[0];
-	dev = _dev.val[0];
-	//std::cout << m << ",\t" << s;
-
+	dev = 0;
+	for (int i = 0; i < array.size(); i++)
+	{
+		float f = array[i];
+		dev += (f-mean) * (f-mean);
+	}
+	dev /= array.size();
+	dev = sqrt(dev);
+	
 }
-
-
 
 void myMeanStdDev(std::vector<cv::Point>& array, Point& mean, float& dev)
 {

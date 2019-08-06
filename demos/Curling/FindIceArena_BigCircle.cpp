@@ -3,7 +3,7 @@
 using namespace cv; //°üº¬cvÃüÃû¿Õ¼ä
 #include "Utils.h"
 
-struct ProcessImages
+static struct ProcessImages
 {
 	Mat srcImage;
 	Mat edgeImage;
