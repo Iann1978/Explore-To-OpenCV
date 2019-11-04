@@ -2,3 +2,7 @@
 	path = ext/opencv3.4
 	url = git@github.com:opencv/opencv.git
 	branch = 3.4
+[submodule "ext/opencv_contrib3.4"]
+	path = ext/opencv_contrib3.4
+	url = git@github.com:opencv/opencv_contrib.git
+	branch = 3.4
