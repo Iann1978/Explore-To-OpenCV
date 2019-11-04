@@ -1,0 +1,4 @@
+[submodule "ext/opencv3.4"]
+	path = ext/opencv3.4
+	url = git@github.com:opencv/opencv.git
+	branch = 3.4
